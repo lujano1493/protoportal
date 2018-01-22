@@ -5,6 +5,7 @@ namespace AppBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Translation\TranslatorInterface;
 
 class DefaultController extends Controller
 {
@@ -18,4 +19,19 @@ class DefaultController extends Controller
             'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
         ]);
     }
+
+
+    /**
+     * @Route("/proximamente", name="commin_soon")
+     */
+    public function proximamenteAction(Request $request)
+    {
+
+       $translated = $this->get('translator')->trans('label.test');
+
+       //$translator->trans('Hola  '.$name);
+        return $this->render('proximamente.html.twig',[]);
+    }
+
+
 }

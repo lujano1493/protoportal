@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "4343bd3d70c0e497652450130efd1d39",
+    "content-hash": "a7baa09e7492569642025d495bcb1c5a",
     "packages": [
         {
             "name": "composer/ca-bundle",
@@ -1068,6 +1068,104 @@
             "time": "2017-06-19T01:22:40+00:00"
         },
         {
+            "name": "nikic/php-parser",
+            "version": "v3.1.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nikic/PHP-Parser.git",
+                "reference": "579f4ce846734a1cf55d6a531d00ca07a43e3cda"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/579f4ce846734a1cf55d6a531d00ca07a43e3cda",
+                "reference": "579f4ce846734a1cf55d6a531d00ca07a43e3cda",
+                "shasum": ""
+            },
+            "require": {
+                "ext-tokenizer": "*",
+                "php": ">=5.5"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0|~5.0"
+            },
+            "bin": [
+                "bin/php-parse"
+            ],
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "PhpParser\\": "lib/PhpParser"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Nikita Popov"
+                }
+            ],
+            "description": "A PHP parser written in PHP",
+            "keywords": [
+                "parser",
+                "php"
+            ],
+            "time": "2017-12-26T14:43:21+00:00"
+        },
+        {
+            "name": "nyholm/nsa",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Nyholm/NSA.git",
+                "reference": "213a70dee2dd04433d31a187e24e92c8b59d1655"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Nyholm/NSA/zipball/213a70dee2dd04433d31a187e24e92c8b59d1655",
+                "reference": "213a70dee2dd04433d31a187e24e92c8b59d1655",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.3 || ^7.0",
+                "webmozart/assert": "^1.1.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Nyholm\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Tobias Nyholm",
+                    "email": "tobias.nyholm@gmail.com"
+                }
+            ],
+            "description": "See everything and do whatever you want. No privacy rule will stop us. Used in tests, debugging and fixtures to access properties and methods.",
+            "homepage": "http://tnyholm.se",
+            "keywords": [
+                "Fixture",
+                "debug",
+                "reflection",
+                "test"
+            ],
+            "time": "2017-04-13T17:21:01+00:00"
+        },
+        {
             "name": "paragonie/random_compat",
             "version": "v2.0.11",
             "source": {
@@ -1114,6 +1212,214 @@
                 "random"
             ],
             "time": "2017-09-27T21:40:39+00:00"
+        },
+        {
+            "name": "php-translation/common",
+            "version": "0.2.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-translation/common.git",
+                "reference": "6d6b78dcec7f3dc318324fcb34683170b43dd497"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-translation/common/zipball/6d6b78dcec7f3dc318324fcb34683170b43dd497",
+                "reference": "6d6b78dcec7f3dc318324fcb34683170b43dd497",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.4 || ^7.0"
+            },
+            "require-dev": {
+                "symfony/phpunit-bridge": "^3.4 || ^4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Translation\\Common\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Tobias Nyholm",
+                    "email": "tobias.nyholm@gmail.com"
+                }
+            ],
+            "description": "Common translation stuff",
+            "time": "2017-12-28T18:26:58+00:00"
+        },
+        {
+            "name": "php-translation/extractor",
+            "version": "1.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-translation/extractor.git",
+                "reference": "810f91c204974f07eba19268ea592d993c2055b5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-translation/extractor/zipball/810f91c204974f07eba19268ea592d993c2055b5",
+                "reference": "810f91c204974f07eba19268ea592d993c2055b5",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/annotations": "^1.2",
+                "nikic/php-parser": "^3.0",
+                "php": "^5.5 || ^7.0",
+                "symfony/finder": "^2.7 || ^3.0 || ^4.0",
+                "twig/twig": "^1.27 || ^2.0"
+            },
+            "require-dev": {
+                "symfony/phpunit-bridge": "^3.4 || ^4.0",
+                "symfony/translation": "^3.0 || ^4.0",
+                "symfony/twig-bridge": "^3.0 || ^4.0",
+                "symfony/validator": "^3.0 || ^4.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.4-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Translation\\Extractor\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Tobias Nyholm",
+                    "email": "tobias.nyholm@gmail.com"
+                }
+            ],
+            "description": "Extract translations form the source code",
+            "time": "2018-01-06T12:38:04+00:00"
+        },
+        {
+            "name": "php-translation/symfony-bundle",
+            "version": "0.6.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-translation/symfony-bundle.git",
+                "reference": "a772cdb989c1a7aac494997a7b5fec1eef51fec2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-translation/symfony-bundle/zipball/a772cdb989c1a7aac494997a7b5fec1eef51fec2",
+                "reference": "a772cdb989c1a7aac494997a7b5fec1eef51fec2",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.5 || ^7.0",
+                "php-translation/common": "^0.2.1",
+                "php-translation/extractor": "^1.3",
+                "php-translation/symfony-storage": "^0.4.0",
+                "symfony/finder": "^2.7 || ^3.0 || ^4.0",
+                "symfony/framework-bundle": "^2.7 || ^3.0 || ^4.0",
+                "symfony/intl": "^2.7 || ^3.0 || ^4.0",
+                "symfony/translation": "^2.7 || ^3.0 || ^4.0",
+                "symfony/validator": "^2.7 || ^3.0 || ^4.0"
+            },
+            "require-dev": {
+                "guzzlehttp/psr7": "^1.4",
+                "matthiasnoback/symfony-config-test": "^2.2 || ^3.1",
+                "matthiasnoback/symfony-dependency-injection-test": "^1.2 || ^2.3",
+                "nyholm/nsa": "^1.1",
+                "nyholm/symfony-bundle-test": "^1.2.3",
+                "php-http/curl-client": "^1.7",
+                "php-http/message": "^1.6",
+                "php-http/message-factory": "^1.0.2",
+                "php-translation/translator": "^0.1",
+                "symfony/asset": "^2.7 || ^3.0 || ^4.0",
+                "symfony/console": "^2.7 || ^3.0 || ^4.0",
+                "symfony/dependency-injection": "^2.7 || ^3.0 || ^4.0",
+                "symfony/phpunit-bridge": "^3.4 || ^4.0",
+                "symfony/templating": "^2.7 || ^3.0 || ^4.0",
+                "symfony/twig-bridge": "^2.7 || ^3.0 || ^4.0",
+                "symfony/twig-bundle": "^2.7 || ^3.0 || ^4.0",
+                "symfony/web-profiler-bundle": "^2.7 || ^3.0 || ^4.0"
+            },
+            "suggest": {
+                "php-http/httplug-bundle": "To easier configure your httplug clients."
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.7-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Translation\\Bundle\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Tobias Nyholm",
+                    "email": "tobias.nyholm@gmail.com"
+                }
+            ],
+            "time": "2018-01-17T12:24:40+00:00"
+        },
+        {
+            "name": "php-translation/symfony-storage",
+            "version": "0.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-translation/symfony-storage.git",
+                "reference": "16eeffd65d73094ba7fc39356ca8f8f13a6be6a9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-translation/symfony-storage/zipball/16eeffd65d73094ba7fc39356ca8f8f13a6be6a9",
+                "reference": "16eeffd65d73094ba7fc39356ca8f8f13a6be6a9",
+                "shasum": ""
+            },
+            "require": {
+                "nyholm/nsa": "^1.1",
+                "php": "^5.5 || ^7.0",
+                "php-translation/common": "^0.2.1",
+                "symfony/translation": "^2.7 || ^3.0 || ^4.0"
+            },
+            "require-dev": {
+                "symfony/framework-bundle": "^2.7.39 || ^3.0 || ^4.0",
+                "symfony/phpunit-bridge": "^3.4 || ^4.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.3-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Translation\\SymfonyStorage\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Tobias Nyholm",
+                    "email": "tobias.nyholm@gmail.com"
+                }
+            ],
+            "description": "A translation file storage using Symfony translation component.",
+            "time": "2017-12-27T11:41:24+00:00"
         },
         {
             "name": "psr/cache",
@@ -2255,6 +2561,56 @@
                 "templating"
             ],
             "time": "2017-09-27T18:06:46+00:00"
+        },
+        {
+            "name": "webmozart/assert",
+            "version": "1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/webmozart/assert.git",
+                "reference": "2db61e59ff05fe5126d152bd0655c9ea113e550f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/webmozart/assert/zipball/2db61e59ff05fe5126d152bd0655c9ea113e550f",
+                "reference": "2db61e59ff05fe5126d152bd0655c9ea113e550f",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.3.3 || ^7.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.6",
+                "sebastian/version": "^1.0.1"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.3-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Webmozart\\Assert\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Bernhard Schussek",
+                    "email": "bschussek@gmail.com"
+                }
+            ],
+            "description": "Assertions to validate method input/output with nice error messages.",
+            "keywords": [
+                "assert",
+                "check",
+                "validate"
+            ],
+            "time": "2016-11-23T20:04:58+00:00"
         }
     ],
     "packages-dev": [
@@ -2387,8 +2743,5 @@
     "platform": {
         "php": ">=5.5.9"
     },
-    "platform-dev": [],
-    "platform-overrides": {
-        "php": "5.5.9"
-    }
+    "platform-dev": []
 }
