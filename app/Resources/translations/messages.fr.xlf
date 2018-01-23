@@ -1,72 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="es" trgLang="fr">
   <file id="messages.fr">
-    <unit id="2U51GG8">
+    <unit id="R4ZvqsP">
       <notes>
-        <note category="file-source" priority="1">app/Resources/views/proximamente.html.twig:72</note>
+        <note category="file-source" priority="1">app\Resources\views\proximamente.html.twig:11</note>
       </notes>
       <segment>
-        <source>text.foo</source>
+        <source>comming.head_title</source>
         <target></target>
       </segment>
     </unit>
-    <unit id="_TWlsYi">
+    <unit id="KH0.3FA">
       <notes>
-        <note category="file-source" priority="1">app/Resources/views/proximamente.html.twig:74</note>
+        <note category="file-source" priority="1">app\Resources\views\proximamente.html.twig:36</note>
       </notes>
       <segment>
-        <source>text.bar</source>
+        <source>comming.title</source>
         <target></target>
       </segment>
     </unit>
-    <unit id="66C0CSC">
+    <unit id="b3KSSIr">
       <notes>
-        <note category="file-source" priority="1">app/Resources/views/proximamente.html.twig:76</note>
+        <note category="file-source" priority="1">app\Resources\views\proximamente.html.twig:38</note>
       </notes>
       <segment>
-        <source>text.baz</source>
+        <source>comming.messageDate</source>
         <target></target>
       </segment>
     </unit>
-    <unit id="JZXQitI">
+    <unit id="3UphXbX">
       <notes>
-        <note category="file-source" priority="1">app/Resources/views/proximamente.html.twig:82</note>
+        <note category="file-source" priority="1">app\Resources\views\proximamente.html.twig:39</note>
       </notes>
       <segment>
-        <source>foo.bar</source>
+        <source>comming.messageInstruction</source>
         <target></target>
       </segment>
     </unit>
-    <unit id="EuoYvja">
+    <unit id="7h1iq2S">
       <notes>
-        <note category="file-source" priority="1">app/Resources/views/proximamente.html.twig:84</note>
+        <note category="file-source" priority="1">app\Resources\views\proximamente.html.twig:41</note>
       </notes>
       <segment>
-        <source>foo.bar2</source>
+        <source>comming.test_bitch</source>
         <target></target>
       </segment>
     </unit>
-    <unit id="Tr20GFZ">
+    <unit id="h16F1_o">
       <notes>
-        <note category="file-source" priority="1">app/Resources/views/proximamente.html.twig:90</note>
+        <note category="file-source" priority="1">app\Resources\views\proximamente.html.twig:47</note>
       </notes>
       <segment>
-        <source>text.default_domain</source>
-        <target></target>
-      </segment>
-    </unit>
-    <unit id="47DEQpj">
-      <segment>
-        <source></source>
+        <source>comming.btnMsg</source>
         <target></target>
       </segment>
     </unit>
     <unit id="KxsAvY7">
       <notes>
-        <note category="file-source" priority="1">src/AppBundle/Controller/DefaultController.php:30</note>
+        <note category="file-source" priority="1">src\AppBundle\Controller\DefaultController.php:30</note>
       </notes>
       <segment>
         <source>label.test</source>
+        <target></target>
+      </segment>
+    </unit>
+    <unit id="RuIJkZl">
+      <notes>
+        <note category="file-source" priority="1">app\Resources\views\proximamente.html.twig:44</note>
+        <note category="state" priority="1">new</note>
+      </notes>
+      <segment>
+        <source>comming.placeholder_email</source>
         <target></target>
       </segment>
     </unit>

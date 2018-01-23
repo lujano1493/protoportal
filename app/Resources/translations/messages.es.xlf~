@@ -71,7 +71,7 @@
       </notes>
       <segment>
         <source>comming.placeholder_email</source>
-        <target>Ingresa email ...</target>
+        <target>Ingresa email</target>
       </segment>
     </unit>
   </file>

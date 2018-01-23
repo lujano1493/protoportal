@@ -1,73 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="es" trgLang="en">
+<xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="en" trgLang="en">
   <file id="messages.en">
-    <unit id="2U51GG8">
+    <unit id="R4ZvqsP">
       <notes>
-        <note category="file-source" priority="1">app/Resources/views/proximamente.html.twig:72</note>
+        <note category="file-source" priority="1">app\Resources\views\proximamente.html.twig:11</note>
       </notes>
       <segment>
-        <source>text.foo</source>
+        <source>comming.head_title</source>
+        <target>Coming Soon - Start Bootstrap Theme</target>
+      </segment>
+    </unit>
+    <unit id="KH0.3FA">
+      <notes>
+        <note category="file-source" priority="1">app\Resources\views\proximamente.html.twig:36</note>
+      </notes>
+      <segment>
+        <source>comming.title</source>
+        <target>Coming Soon!</target>
+      </segment>
+    </unit>
+    <unit id="b3KSSIr">
+      <notes>
+        <note category="file-source" priority="1">app\Resources\views\proximamente.html.twig:38</note>
+      </notes>
+      <segment>
+        <source>comming.messageDate</source>
+        <target><![CDATA[We're working hard to finish the development of this site. Our target launch date is <strong>January 2018</strong>! ]]></target>
+      </segment>
+    </unit>
+    <unit id="3UphXbX">
+      <notes>
+        <note category="file-source" priority="1">app\Resources\views\proximamente.html.twig:39</note>
+      </notes>
+      <segment>
+        <source>comming.messageInstruction</source>
+        <target>Sign up for updates using the form below</target>
+      </segment>
+    </unit>
+    <unit id="7h1iq2S">
+      <notes>
+        <note category="file-source" priority="1">app\Resources\views\proximamente.html.twig:41</note>
+      </notes>
+      <segment>
+        <source>comming.test_bitch</source>
         <target></target>
       </segment>
     </unit>
-    <unit id="_TWlsYi">
+    <unit id="h16F1_o">
       <notes>
-        <note category="file-source" priority="1">app/Resources/views/proximamente.html.twig:74</note>
+        <note category="file-source" priority="1">app\Resources\views\proximamente.html.twig:47</note>
       </notes>
       <segment>
-        <source>text.bar</source>
-        <target></target>
-      </segment>
-    </unit>
-    <unit id="66C0CSC">
-      <notes>
-        <note category="file-source" priority="1">app/Resources/views/proximamente.html.twig:76</note>
-      </notes>
-      <segment>
-        <source>text.baz</source>
-        <target></target>
-      </segment>
-    </unit>
-    <unit id="JZXQitI">
-      <notes>
-        <note category="file-source" priority="1">app/Resources/views/proximamente.html.twig:82</note>
-      </notes>
-      <segment>
-        <source>foo.bar</source>
-        <target></target>
-      </segment>
-    </unit>
-    <unit id="EuoYvja">
-      <notes>
-        <note category="file-source" priority="1">app/Resources/views/proximamente.html.twig:84</note>
-      </notes>
-      <segment>
-        <source>foo.bar2</source>
-        <target></target>
-      </segment>
-    </unit>
-    <unit id="Tr20GFZ">
-      <notes>
-        <note category="file-source" priority="1">app/Resources/views/proximamente.html.twig:90</note>
-      </notes>
-      <segment>
-        <source>text.default_domain</source>
-        <target></target>
-      </segment>
-    </unit>
-    <unit id="47DEQpj">
-      <segment>
-        <source></source>
-        <target></target>
+        <source>comming.btnMsg</source>
+        <target>Notify Me!</target>
       </segment>
     </unit>
     <unit id="KxsAvY7">
       <notes>
-        <note category="file-source" priority="1">src/AppBundle/Controller/DefaultController.php:30</note>
+        <note category="file-source" priority="1">src\AppBundle\Controller\DefaultController.php:30</note>
       </notes>
       <segment>
         <source>label.test</source>
-        <target></target>
+        <target>message test</target>
+      </segment>
+    </unit>
+    <unit id="RuIJkZl">
+      <notes>
+        <note category="file-source" priority="1">app\Resources\views\proximamente.html.twig:44</note>
+        <note category="state" priority="1">new</note>
+      </notes>
+      <segment>
+        <source>comming.placeholder_email</source>
+        <target>Enter email...</target>
       </segment>
     </unit>
   </file>

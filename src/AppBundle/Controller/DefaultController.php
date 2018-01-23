@@ -22,12 +22,20 @@ class DefaultController extends Controller
 
 
     /**
-     * @Route("/proximamente", name="commin_soon")
+     * @Route("/{_locate}/proximamente", name="commin_soon",
+     *     defaults={"_locate": "es"},
+     *     requirements={
+     *         "_locale": "es|en|fr"
+     *     })
      */
-    public function proximamenteAction(Request $request)
+    public function proximamenteAction(Request $request ,$_locale="es" )
     {
 
-       $translated = $this->get('translator')->trans('label.test');
+
+      $request->setLocale("en");
+       // $translated = $this->get('translator')->trans('label.test');
+       // var_dump($translated);
+       // die;
 
        //$translator->trans('Hola  '.$name);
         return $this->render('proximamente.html.twig',[]);
