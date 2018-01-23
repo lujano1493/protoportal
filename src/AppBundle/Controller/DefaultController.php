@@ -22,17 +22,11 @@ class DefaultController extends Controller
 
 
     /**
-     * @Route("/{_locate}/proximamente", name="commin_soon",
-     *     defaults={"_locate": "es"},
-     *     requirements={
-     *         "_locale": "es|en|fr"
-     *     })
+     * @Route("/proximamente", name="commin_soon")
      */
-    public function proximamenteAction(Request $request ,$_locale="es" )
+    public function proximamenteAction(Request $request  )
     {
 
-
-      $request->setLocale("en");
        // $translated = $this->get('translator')->trans('label.test');
        // var_dump($translated);
        // die;
