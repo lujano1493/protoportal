@@ -29,9 +29,12 @@ framework:
         save_path: '%kernel.project_dir%/var/sessions/%kernel.environment%'
     fragments: ~
     http_method_override: true
+    templating:
+        engines: ['twig']
     assets: ~
     php_errors:
         log: true
+
 
 # Twig Configuration
 twig:
@@ -67,3 +70,12 @@ swiftmailer:
     username: '%mailer_user%'
     password: '%mailer_password%'
     spool: { type: memory }
+
+assetic:
+    debug:          '%kernel.debug%'
+    use_controller: '%kernel.debug%'
+    filters:
+        cssrewrite: ~
+        scssphp:
+            formatter: 'Leafo\ScssPhp\Formatter\Compressed'
+        jsqueeze: ~

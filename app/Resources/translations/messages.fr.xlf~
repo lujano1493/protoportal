@@ -64,5 +64,15 @@
         <target></target>
       </segment>
     </unit>
+    <unit id="RuIJkZl">
+      <notes>
+        <note category="file-source" priority="1">app\Resources\views\proximamente.html.twig:44</note>
+        <note category="state" priority="1">new</note>
+      </notes>
+      <segment>
+        <source>comming.placeholder_email</source>
+        <target></target>
+      </segment>
+    </unit>
   </file>
 </xliff>

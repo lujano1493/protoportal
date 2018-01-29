@@ -1,11 +1,11 @@
 app:
     resource: '@AppBundle/Controller/'
     type: annotation
-    prefix:   /{_locale}
-    requirements:
-        _locale: '%app_locales%'
-    defaults:
-        _locale: '%locale%'
+#   prefix:   /{_locale}
+#    requirements:
+#        _locale: '%app_locales%'
+#    defaults:
+#        _locale: '%locale%'
 
 _translation_edit_in_place:
     resource: '@TranslationBundle/Resources/config/routing_edit_in_place.yml'
