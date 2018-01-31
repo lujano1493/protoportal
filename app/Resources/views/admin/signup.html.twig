@@ -1,0 +1,71 @@
+{% extends "blank.admin.html.twig" %}
+
+
+{% block content %}
+
+    <div class="auth">
+            <div class="auth-container">
+                <div class="card">
+                    <header class="auth-header">
+                        <h1 class="auth-title">
+                            <div class="logo">
+                                <span class="l l1"></span>
+                                <span class="l l2"></span>
+                                <span class="l l3"></span>
+                                <span class="l l4"></span>
+                                <span class="l l5"></span>
+                            </div> ModularAdmin </h1>
+                    </header>
+                    <div class="auth-content">
+                        <p class="text-center">SIGNUP TO GET INSTANT ACCESS</p>
+                        <form id="signup-form" action="/index.html" method="GET" novalidate="novalidate">
+                            <div class="form-group has-error">
+                                <label for="firstname">Name</label>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control underlined" name="firstname" id="firstname" placeholder="Enter firstname" required="" aria-required="true" aria-describedby="name-error" aria-invalid="true"> </div>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control underlined" name="lastname" id="lastname" placeholder="Enter lastname" required="" aria-required="true" aria-describedby="name-error"> </div>
+                                </div><span id="name-error" class="has-error">Please enter firstname and lastname</span>
+                            </div>
+                            <div class="form-group has-error">
+                                <label for="email">Email</label>
+                                <input type="email" class="form-control underlined" name="email" id="email" placeholder="Enter email address" required="" aria-required="true" aria-describedby="email-error"><span id="email-error" class="has-error">Please enter email</span> </div>
+                            <div class="form-group has-error">
+                                <label for="password">Password</label>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <input type="password" class="form-control underlined" name="password" id="password" placeholder="Enter password" required="" aria-required="true" aria-describedby="pass-error"> </div>
+                                    <div class="col-sm-6">
+                                        <input type="password" class="form-control underlined" name="retype_password" id="retype_password" placeholder="Re-type password" required="" aria-required="true" aria-describedby="pass-error"> </div>
+                                </div><span id="pass-error" class="has-error">Please enter password fields.</span>
+                            </div>
+                            <div class="form-group">
+                                <label for="agree">
+                                    <input class="checkbox" name="agree" id="agree" type="checkbox" required="" aria-required="true">
+                                    <span>Agree the terms and
+                                        <a href="#">policy</a>
+                                    </span>
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-block btn-primary">Sign Up</button>
+                            </div>
+                            <div class="form-group">
+                                <p class="text-muted text-center">Already have an account?
+                                    <a href="login.html">Login!</a>
+                                </p>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <a href="index.html" class="btn btn-secondary btn-sm">
+                        <i class="fa fa-arrow-left"></i> Back to dashboard </a>
+                </div>
+            </div>
+        </div>
+
+
+
+ {% endblock %}
