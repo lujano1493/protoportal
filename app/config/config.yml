@@ -80,5 +80,6 @@ assetic:
     filters:
         cssrewrite: ~
         scssphp:
-            formatter: 'Leafo\ScssPhp\Formatter\Compressed'
+            formatter: 'Leafo\ScssPhp\Formatter\Expanded'
+            import_paths: ['%asset_twbs_scss%' ]
         jsqueeze: ~
