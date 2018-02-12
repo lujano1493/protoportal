@@ -34,6 +34,7 @@
         "symfony/symfony": "3.4.*",
         "twig/twig": "2.4.*",
         "leafo/scssphp": "0.7.4",
+        "oomphinc/composer-installers-extender":"1.1.2",
         "patchwork/jsqueeze": "~2.0",
         "components/jquery": "3.2.1",
         "twbs/bootstrap":"4.0"
@@ -71,6 +72,17 @@
         "incenteev-parameters": {
             "file": "app/config/parameters.yml"
         },
-        "branch-alias": null
-    }
+        "branch-alias": null,
+
+        "installer-types": ["components","twbs"],
+        "installer-paths": {
+            "web/assets/{$vendor}/{$name}/": ["type:components","type:twbs"],
+        }
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        }
+    ]
 }
