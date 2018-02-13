@@ -17,10 +17,21 @@ class DemoController extends Controller
 
     public function actionInicio(Request $request){
       $param= $request->get("opc");
-
+ 		$title= "Demo ";
         // replace this example code with whatever you need
-        return $this->render('nim.base.html.twig', [ ]);
+        return $this->render('demo/inicio.html.twig', compact("title"));
     }
+
+    /**
+		*@Route("/demo/registro")
+    */
+	public function actionRegistro(Request $request){
+
+		 $title= "Registro de Usuario";
+
+		return $this->render('demo/registro.html.twig',compact("title"));
+
+	}
 
 
 }

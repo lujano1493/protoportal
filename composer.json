@@ -30,7 +30,7 @@
         "sensio/framework-extra-bundle": "^5.0.0",
         "symfony/monolog-bundle": "^3.1.0",
         "symfony/polyfill-apcu": "^1.0",
-        "symfony/swiftmailer-bundle": "^2.6.4",
+        "symfony/swiftmailer-bundle": "^2.6.4",    
         "symfony/symfony": "3.4.*",
         "twig/twig": "2.4.*",
         "leafo/scssphp": "0.7.4",
@@ -76,7 +76,7 @@
 
         "installer-types": ["components","twbs"],
         "installer-paths": {
-            "web/assets/{$vendor}/{$name}/": ["type:components","type:twbs"],
+            "web/assets/{$vendor}/{$name}/": ["type:components","type:twbs"]
         }
     },
     "repositories": [

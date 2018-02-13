@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>  {{"comming.head_title" |trans}} </title>
+        <title>  {{ title }} </title>
         {% block stylesheets %}{% endblock %}
 
         {% stylesheets  filter="scssphp"  output="css/app.css"
@@ -21,9 +21,9 @@
     <body>  
 
 
-        {% include 'demo/element/menu.html.twig'  %} 
-
-        {% include 'demo/element/content.html.twig'  %} 
+         {% block content %}
+            
+        {% endblock %}
 
        
        {% javascripts filter="?jsqueeze" output="js/app.js"
@@ -34,6 +34,11 @@
         <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
 
+
+
+         {% block javascript %}
+            
+        {% endblock %}
 
 
     </body>
