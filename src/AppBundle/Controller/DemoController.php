@@ -12,12 +12,25 @@ class DemoController extends Controller
 {
 
     /**
-      * @Route("/demo/inicio")
+      * @Route("/demo/theme")
     */
 
-    public function actionInicio(Request $request){
+    public function actionTemplate(Request $request){
       $param= $request->get("opc");
- 		$title= "Demo ";
+ 		$title= "Template ";
+        // replace this example code with whatever you need
+        return $this->render('demo/theme.html.twig', compact("title"));
+    }
+
+
+
+     /**
+      * @Route("/demo/")
+    */
+
+    public function actionIndex(Request $request){
+      $param= $request->get("opc");
+        $title= "Demo ";
         // replace this example code with whatever you need
         return $this->render('demo/inicio.html.twig', compact("title"));
     }
