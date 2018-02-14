@@ -74,9 +74,9 @@
         },
         "branch-alias": null,
 
-        "installer-types": ["components","twbs"],
+        "installer-types": ["component","twbs"],
         "installer-paths": {
-            "web/assets/{$vendor}/{$name}/": ["type:components","type:twbs"]
+            "web/assets/{$name}/": ["type:component","type:twbs"]
         }
     },
     "repositories": [
