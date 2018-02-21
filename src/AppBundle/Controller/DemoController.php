@@ -39,7 +39,8 @@ class DemoController extends Controller
 		*@Route("/demo/registro")
     */
 	public function actionRegistro(Request $request){
-
+      var_dump( $this );
+       die;
 		 $title= "Registro de Usuario";
 
 		return $this->render('demo/registro.html.twig',compact("title"));

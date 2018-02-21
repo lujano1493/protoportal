@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 
 // src/AppBundle/Controller/RegistrationController.php
@@ -21,6 +21,7 @@ class RegistrationController extends Controller
         // 1) build the form
         $user = new UserExample();
         $form = $this->createForm(UserType::class, $user);
+        
 
         // 2) handle the submit (will only happen on POST)
         $form->handleRequest($request);

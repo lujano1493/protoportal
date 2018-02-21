@@ -11,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity(repositoryClass="AppBundle\Repository\UserRepository")
  * @ORM\HasLifecycleCallbacks
  */
-class User
+class UsuarioCliente
 {
     /**
      * @var int
@@ -28,6 +28,12 @@ class User
      * @ORM\Column(name="nombre", type="string", length=128, nullable=true)
      */
     private $nombre;
+
+    /**
+    * @var string
+    *
+    */
+    private $apellidos;
 
     /**
      * @var string
@@ -100,6 +106,8 @@ class User
     private $fechaRegistro;
 
 
+    private $checarTerminos;
+
     /**
      * Get id
      *
@@ -133,6 +141,31 @@ class User
     {
         return $this->nombre;
     }
+
+
+    /**
+     * Set apellidos
+     *
+     * @param string $apellidos
+     *
+     * @return User
+     */
+    public function setApellidos($apellidos)
+    {
+        $this->apellidos = $apellidos;
+        return $this;
+    }
+
+    /**
+     * Get apellidos
+     *
+     * @return string
+     */
+    public function getApellidos()
+    {
+        return $this->apellidos;
+    }
+
 
     /**
      * Set paterno
@@ -375,6 +408,17 @@ class User
     }
 
 
+
+    public function  hasChecarTerminos(){
+      return $this->checarTerminos;
+    }
+
+    public function setChecarTerminos($checarTerminos){
+      $this->checarTerminos=$checarTerminos;
+      return $this;
+    }
+
+
    /**
      * @ORM\PrePersist
      */
@@ -412,4 +456,3 @@ class User
     }
 
 }
-
