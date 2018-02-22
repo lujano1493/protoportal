@@ -106,7 +106,6 @@ class UsuarioCliente
     private $fechaRegistro;
 
 
-    private $checarTerminos;
 
     /**
      * Get id
@@ -405,17 +404,6 @@ class UsuarioCliente
     public function getFechaRegistro()
     {
         return $this->fechaRegistro;
-    }
-
-
-
-    public function  hasChecarTerminos(){
-      return $this->checarTerminos;
-    }
-
-    public function setChecarTerminos($checarTerminos){
-      $this->checarTerminos=$checarTerminos;
-      return $this;
     }
 
 

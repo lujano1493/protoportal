@@ -10,22 +10,27 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class UsuarioClienteType extends AbstractType
 {
   public function buildForm(FormBuilderInterface $builder, array $options)
   {
       $builder
-          ->add('nombre', TextType::class)
-          ->add('apellidos', TextType::class)
-          ->add('correo', EmailType::class)
+          ->add('nombre', TextType::class, array('label' => 'Nombre Completo' ,'attr'=> array( 'class' =>  'form-control underlined'  ,'placeholder' =>'Ingresa nombre"'  )  ))
+          ->add('apellidos', TextType::class, array('label' => false, 'mapped'=>false, 'attr'=> array( 'class' =>  'form-control underlined'  ,'placeholder' =>'Ingresa apellidos"'  )  ))
+          ->add('correo', EmailType::class, array('label' => 'Correo', 'attr'=> array( 'class' =>  'form-control underlined'  ,'placeholder' =>'Ingresa correo"' )) )
           ->add('contrasena', RepeatedType::class, array(
               'type' => PasswordType::class,
-              'first_options'  => array('label' => 'Ingresa password'),
-              'second_options' => array('label' => 'Rescribe password'),
+              'type' => PasswordType::class,
+              'invalid_message' => 'las contraseñas deben ser iguales.',
+              'options' => array(),
+              'required' => true,
+              'first_options'  => array('label' =>  'Contraseña', 'attr'=> array( 'class' =>  'form-control underlined','placeholder' =>'Ingresa contraseña"' )),
+              'second_options' => array('label' => false, 'attr'=> array( 'class' =>  'form-control underlined', 'placeholder' =>'Rescribe contraseña"' ))
           ))
-          ->add('checarTerminos', CheckboxType::class)
-      ;
+          ->add('checarTerminos', CheckboxType::class, array('mapped'=>false ,'label' =>false, 'attr' =>array('class'=>'checkbox'  )  ))
+          ->add('registrar', SubmitType::class, array('label' => 'Registrarse', 'attr' => array('class' => 'btn btn-block btn-primary')) ) ;
   }
 
   public function configureOptions(OptionsResolver $resolver)

@@ -28,6 +28,8 @@
           $em = $this->getDoctrine()->getManager();
           $em->persist($user);
           $em->flush();
+          //TODO falta enviar correo mensaje de 
+          return $this->redirectToRoute('/');
       }
       else{
         $title= "Registro de Usuario";

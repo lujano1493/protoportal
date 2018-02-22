@@ -1,5 +1,6 @@
 {% extends "nim.base.html.twig" %}
 
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
 
 {% block content %}
 
@@ -14,56 +15,60 @@
                     </header>
                     <div class="auth-content">
                         <p class="text-center"> REGISTRATE PARA OBTENER ACCESO INMEDIATO</p>
-                        <form id="signup-form" action="/demo/inicio" method="POST">
+                        {{ form_start(form) }}
+
+                             {{ form_errors(form) }}
                             <div class="form-group ">
-                                <label for="firstname">Nombre Completo</label>
+                                 {{form_label(form.nombre) }} 
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <input type="text" class="form-control underlined" name="firstname" id="firstname" placeholder="Ingresa nombre" required="" aria-required="true" > </div>
+                                       {{form_widget(form.nombre) }} 
+                                        {{form_errors(form.nombre) }}
+                                    </div>
                                     <div class="col-sm-6">
-                                        <input type="text" class="form-control underlined" name="lastname" id="lastname" placeholder="Ingresa apellidos" required="" > 
+                                         {{form_row(form.apellidos) }}
                                     </div>
                                 </div>
 
                             </div>
                             <div class="form-group ">
-                                <label for="email">Correo</label>
-                                <input type="email" class="form-control underlined" name="email" id="email" placeholder="Ingresa correo" required="" >
-
+                                 {{form_row(form.correo) }}
                             </div>
                             <div class="form-group ">
-                                <label for="password">Password</label>
+                                 {{form_label(form.contrasena.first) }}
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <input type="password" class="form-control underlined" name="password" id="password" placeholder="Ingresa password" required="" > 
+                                         {{form_widget(form.contrasena.first) }}
+                                         {{form_errors(form.contrasena.first) }}
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="password" class="form-control underlined" name="retype_password" id="retype_password" placeholder="Rescribe password" required="" > 
+                                          {{form_row(form.contrasena.second) }}
                                     </div>
                                 </div>
 
                             </div>
                             <div class="form-group">
                                 <label for="agree">
-                                    <input class="checkbox" name="agree" id="agree" type="checkbox" required="" aria-required="true">
+                                     {{form_widget(form.checarTerminos) }}
                                     <span>Acepta terminos y
                                         <a href="#"> condiciones</a>
                                     </span>
+                                      {{form_errors(form.checarTerminos) }}
                                 </label>
                             </div>
                             <div class="form-group">
                                 <div class="g-recaptcha" data-sitekey="6Ldl9kUUAAAAAG3l996KN3Bqd0hBI9GjdWIv7oMB"></div>
                             </div>
-                            <div class="form-group">
-                                <button type="submit" class="btn btn-block btn-primary">Registrarse</button>
-                            </div>
+                            
+                            {{form_row(form.registrar) }}
+
                             <div class="form-group">
                                 <p class="text-muted text-center">
                                     ¿Ya estas registrado?<a href="login.html">¡Ingresa!</a> 
                             
                                 </p>                              
                             </div>
-                        </form>
+                       {{ form_end(form) }}
                     </div>
                 </div>
                 <div class="text-center">
@@ -76,7 +81,6 @@
 
 
  {% endblock %}
-perrra
 
 
 
