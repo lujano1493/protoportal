@@ -15,12 +15,12 @@
 
 
     /**
-    * @Route("/registro")
+    * @Route("/registro", name="nim_registro")
     */
     public function registerAction(Request $request){
 
       $user= new UsuarioCliente();
-      $form = $this->createForm( UsuarioClienteType::class, $user  );
+      $form = $this->createForm( UsuarioClienteType::class, $user ,[ 'action' => $this->generateUrl ('nim_registro') ] );
 
       $form->handleRequest( $request);
 
@@ -28,7 +28,7 @@
           $em = $this->getDoctrine()->getManager();
           $em->persist($user);
           $em->flush();
-          //TODO falta enviar correo mensaje de 
+          //TODO falta enviar correo mensaje de
           return $this->redirectToRoute('/');
       }
       else{

@@ -26,7 +26,8 @@
                                         {{form_errors(form.nombre) }}
                                     </div>
                                     <div class="col-sm-6">
-                                         {{form_row(form.apellidos) }}
+                                        {{form_widget(form.apellidos) }} 
+                                        {{form_errors(form.apellidos) }}
                                     </div>
                                 </div>
 
@@ -42,7 +43,9 @@
                                          {{form_errors(form.contrasena.first) }}
                                     </div>
                                     <div class="col-sm-6">
-                                          {{form_row(form.contrasena.second) }}
+
+                                        {{form_widget(form.contrasena.second) }}
+                                        {{form_errors(form.contrasena.second) }}
                                     </div>
                                 </div>
 
@@ -50,9 +53,7 @@
                             <div class="form-group">
                                 <label for="agree">
                                      {{form_widget(form.checarTerminos) }}
-                                    <span>Acepta terminos y
-                                        <a href="#"> condiciones</a>
-                                    </span>
+                                     
                                       {{form_errors(form.checarTerminos) }}
                                 </label>
                             </div>
@@ -60,7 +61,7 @@
                                 <div class="g-recaptcha" data-sitekey="6Ldl9kUUAAAAAG3l996KN3Bqd0hBI9GjdWIv7oMB"></div>
                             </div>
                             
-                            {{form_row(form.registrar) }}
+                            {{form_widget(form.registrar) }}
 
                             <div class="form-group">
                                 <p class="text-muted text-center">
@@ -68,6 +69,7 @@
                             
                                 </p>                              
                             </div>
+
                        {{ form_end(form) }}
                     </div>
                 </div>
