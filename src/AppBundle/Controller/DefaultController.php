@@ -12,7 +12,7 @@ class DefaultController extends Controller
 {
 
     /**
-     * @Route("/")
+     * @Route("/",name="home")
      */
     public function indexAction(Request $request)
     {

@@ -31,11 +31,6 @@ class UsuarioClienteType extends AbstractType
           ))
           ->add('checarTerminos', CheckboxType::class, array('mapped'=>false ,'label' =>'Acepta terminos y condiciones', 'attr' =>array('class'=>'checkbox'  )  ))
           ->add('registrar', SubmitType::class, array('label' => 'Registrarse', 'attr' => array('class' => 'btn btn-block btn-primary')) )
-          ->add('dueDate', DateType::class, array(
-                'mapped'=> false,
-                'widget' => 'single_text',
-                'label'  => 'Due Date'
-            ))
 
           ;
   }

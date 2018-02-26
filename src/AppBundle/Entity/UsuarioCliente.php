@@ -3,13 +3,16 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * User
  *
- * @ORM\Table(name="UsuarioCliente")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\UserRepository")
+ * @ORM\Table(name="usuario_cliente")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\UsuarioClienteRepository")
  * @ORM\HasLifecycleCallbacks
+ * @UniqueEntity("correo", message="El correo ya ha sido utilizado")
  */
 class UsuarioCliente
 {
@@ -26,14 +29,15 @@ class UsuarioCliente
      * @var string
      *
      * @ORM\Column(name="nombre", type="string", length=128, nullable=true)
+     * @Assert\Regex(
+     *     pattern="/\d/",
+     *     match=false,
+     *     message="Tu nombre no puede contener numeros"
+     * )
      */
     private $nombre;
 
-    /**
-    * @var string
-    *
-    */
-    private $apellidos;
+
 
     /**
      * @var string
@@ -84,19 +88,13 @@ class UsuarioCliente
      */
     private $montoInicial;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="codigo_postal", type="string", length=12)
-     */
-    private $cp;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="pais", type="string", length=100, nullable=true)
+     * @ORM\Column(name="pais_codigo", type="string", length=2, nullable=true)
      */
-    private $pais;
+    private $paisCodigo;
 
     /**
      * @var \DateTime
@@ -141,29 +139,6 @@ class UsuarioCliente
         return $this->nombre;
     }
 
-
-    /**
-     * Set apellidos
-     *
-     * @param string $apellidos
-     *
-     * @return User
-     */
-    public function setApellidos($apellidos)
-    {
-        $this->apellidos = $apellidos;
-        return $this;
-    }
-
-    /**
-     * Get apellidos
-     *
-     * @return string
-     */
-    public function getApellidos()
-    {
-        return $this->apellidos;
-    }
 
 
     /**
@@ -334,29 +309,7 @@ class UsuarioCliente
         return $this->montoInicial;
     }
 
-    /**
-     * Set cp
-     *
-     * @param string $cp
-     *
-     * @return User
-     */
-    public function setCp($cp)
-    {
-        $this->cp = $cp;
 
-        return $this;
-    }
-
-    /**
-     * Get cp
-     *
-     * @return string
-     */
-    public function getCp()
-    {
-        return $this->cp;
-    }
 
     /**
      * Set pais
@@ -365,9 +318,9 @@ class UsuarioCliente
      *
      * @return User
      */
-    public function setPais($pais)
+    public function setPaisCodigo($paisCodigo)
     {
-        $this->pais = $pais;
+        $this->paisCodigo = $paisCodigo;
 
         return $this;
     }
@@ -377,9 +330,9 @@ class UsuarioCliente
      *
      * @return string
      */
-    public function getPais()
+    public function getPaisCodigo()
     {
-        return $this->pais;
+        return $this->paisCodigo;
     }
 
     /**
