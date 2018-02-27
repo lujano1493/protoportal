@@ -5,6 +5,7 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * User
@@ -13,8 +14,9 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * @ORM\Entity(repositoryClass="AppBundle\Repository\UsuarioClienteRepository")
  * @ORM\HasLifecycleCallbacks
  * @UniqueEntity("correo", message="El correo ya ha sido utilizado")
+ * @UniqueEntity("nickname", message="El nickname ya ha sido utilizado")
  */
-class UsuarioCliente
+class UsuarioCliente implements UserInterface
 {
     /**
      * @var int
@@ -393,6 +395,28 @@ class UsuarioCliente
 
             // Both algorithms generate a 60-character string that looks like:
 // $salt . $hashed_password
+
+    }
+
+      public function getSalt()
+    {
+        return null;
+    }
+
+     public function getRoles(){
+        return "user";
+     }
+
+
+    public function getPassword(){
+        return $this->contrasena;
+    }
+
+      public function getUsername(){
+        return $this->correo;
+      }
+
+    public function eraseCredentials(){
 
     }
 

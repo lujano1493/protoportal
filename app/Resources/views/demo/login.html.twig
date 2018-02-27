@@ -1,0 +1,45 @@
+{% extends "nim.base.html.twig" %}
+
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+
+
+	<div class="auth">
+            <div class="auth-container">
+                <div class="card">
+                    <header class="auth-header">
+                        <h1 class="auth-title">
+                             Ingreso a NIM </h1>
+                    </header>
+                    <div class="auth-content">
+                        <p class="text-center"> Iniciar Sesión </p>
+                        <form id="login-form" action="/login" method="POST" novalidate="novalidate">
+                            <div class="form-group">
+                                <label for="username">Correo</label>
+                                <input type="email" class="form-control underlined" name="username" id="username" placeholder="Your email address" required="" aria-required="true"> </div>
+                            <div class="form-group">
+                                <label for="password">Contraseña</label>
+                                <input type="password" class="form-control underlined" name="password" id="password" placeholder="Your password" required="" aria-required="true"> </div>
+                            <div class="form-group">
+                                <label for="remember">
+                                    <input class="checkbox" id="remember" type="checkbox">
+                                    <span>Recordarme</span>
+                                </label>
+                                <a href="reset.html" class="forgot-btn pull-right">olvidaste tu contraseña?</a>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-block btn-primary">Ingresar</button>
+                            </div>
+                            <div class="form-group">
+                                <p class="text-muted text-center">aun no estas registrado?
+                                    <a href="signup.html">Registrate!</a>
+                                </p>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <a href="index.html" class="btn btn-secondary btn-sm">
+                        <i class="fa fa-arrow-left"></i>  Regresar a Inicio </a>
+                </div>
+            </div>
+        </div>
