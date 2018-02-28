@@ -33,6 +33,19 @@
 
                             </div>
                             <div class="form-group ">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                         {{form_label(form.correo) }}
+                                         {{form_widget(form.correo) }}
+                                         {{form_errors(form.correo) }}
+                                    </div>
+                                    <div class="col-sm-6">
+                                        {{form_label(form.fechaNac) }}
+                                        {{form_widget(form.fechaNac) }}
+                                        {{form_errors(form.fechaNac) }}
+                                    </div>
+                                </div>
+
                                  {{form_row(form.correo) }}
                             </div>
                             <div class="form-group ">

@@ -16,7 +16,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
  * @UniqueEntity("correo", message="El correo ya ha sido utilizado")
  * @UniqueEntity("nickname", message="El nickname ya ha sido utilizado")
  */
-class UsuarioCliente implements UserInterface
+class UsuarioCliente implements UserInterface, \Serializable
 {
     /**
      * @var int
@@ -98,6 +98,18 @@ class UsuarioCliente implements UserInterface
      */
     private $paisCodigo;
 
+
+
+   /**
+     * @var \DateTime
+     *
+     * @Assert\Date(message="Ingresa fecha valida")
+     * @ORM\Column(name="fecha_nacimiento", type="datetime")
+     */
+    private $fechaNac;
+
+
+
     /**
      * @var \DateTime
      *
@@ -105,6 +117,12 @@ class UsuarioCliente implements UserInterface
      */
     private $fechaRegistro;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="keycode", type="string", length=521, nullable=true)
+     */
+    private $keyCode;
 
 
     /**
@@ -337,6 +355,31 @@ class UsuarioCliente implements UserInterface
         return $this->paisCodigo;
     }
 
+
+        /**
+         * Get the value of Fecha Nac
+         *
+         * @return \DateTime
+         */
+        public function getFechaNac()
+        {
+            return $this->fechaNac;
+        }
+
+        /**
+         * Set the value of Fecha Nac
+         *
+         * @param \DateTime fechaNac
+         *
+         * @return self
+         */
+        public function setFechaNac(\DateTime $fechaNac)
+        {
+            $this->fechaNac = $fechaNac;
+
+            return $this;
+        }
+
     /**
      * Set fechaRegistro
      *
@@ -370,32 +413,42 @@ class UsuarioCliente implements UserInterface
         $this->fechaRegistro = new \DateTime();
     }
 
+
+
+        /**
+         * Get the value of Key Code
+         *
+         * @return string
+         */
+        public function getKeyCode()
+        {
+            return $this->keyCode;
+        }
+
+        /**
+         * Set the value of Key Code
+         *
+         * @param string keyCode
+         *
+         * @return self
+         */
+        public function setKeyCode($keyCode)
+        {
+            $this->keyCode = $keyCode;
+
+            return $this;
+        }
+
     /**
      * @ORM\PrePersist
      */
-    public function encriptarContrasena()
+    public function generaKeyCode()
     {
-            // PHP has had a built-in password_hash function since 5.5.0
-            // It's currently based on BCRYPT, but pass PASSWORD_BCRYPT
-            // to ensure this doesn't change.
-
-            // Generate a password using a random salt
-            $this->contrasena= password_hash($this->contrasena, PASSWORD_BCRYPT);
-
-            // Generate a password with a known salt.
-            //password_hash($password, PASSWORD_BCRYPT, array("salt" => $salt));
-
-
-            // Before 5.5:
-            // 5.3.7 and on: use $2y$ as the salt prefix
-            // Otherwise, use $2x$
-            // This will cause crypt to generate a bcrypt hash
-            //$salt = '$2y$10$' . mcrypt_create_iv(22);
-           // $salted_password = crypt($password, $salt)
-
-            // Both algorithms generate a 60-character string that looks like:
-// $salt . $hashed_password
-
+            $opciones = [
+                'cost' => 11,
+                'salt' => random_bytes(22),
+            ];
+            $this->keyCode=password_hash($this->contrasena, CRYPT_BLOWFISH, $opciones);
     }
 
       public function getSalt()
@@ -404,7 +457,7 @@ class UsuarioCliente implements UserInterface
     }
 
      public function getRoles(){
-        return "user";
+        return ["ROLE_USER_NIM"];
      }
 
 
@@ -419,5 +472,36 @@ class UsuarioCliente implements UserInterface
     public function eraseCredentials(){
 
     }
+
+
+      /** @see \Serializable::serialize() */
+    public function serialize()
+    {
+        return serialize(array(
+            $this->id,
+            $this->correo,
+            $this->contrasena,
+            // see section on salt below
+            // $this->salt,
+        ));
+    }
+
+    /** @see \Serializable::unserialize() */
+    public function unserialize($serialized)
+    {
+        list (
+            $this->id,
+            $this->correo,
+            $this->contrasena,
+            // see section on salt below
+            // $this->salt
+        ) = unserialize($serialized);
+    }
+
+
+
+
+
+
 
 }

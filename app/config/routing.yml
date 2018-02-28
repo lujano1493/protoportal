@@ -12,6 +12,8 @@ _translation_edit_in_place:
     prefix:  /admin
 
 
+logout:
+    path: /logout
 
 
 # These lines define a route using YAML configuration. The controller used by

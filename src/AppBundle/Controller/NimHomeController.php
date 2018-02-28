@@ -11,6 +11,8 @@
   use AppBundle\Entity\UsuarioCliente;
   use AppBundle\Entity\CatalogoGeoIpPais;
   use AppBundle\Form\UsuarioClienteType;
+  use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+  use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
   class NimHomeController extends Controller{
 
@@ -23,7 +25,7 @@
     /**
     * @Route("/registro", name="nim_registro")
     */
-    public function registerAction(Request $request,\Swift_Mailer $mailer){
+    public function registerAction(Request $request, UserPasswordEncoderInterface $passwordEncoder,\Swift_Mailer $mailer){
 
       $user= new UsuarioCliente();
       $form = $this->createForm( UsuarioClienteType::class, $user ,[ 'action' => $this->generateUrl ('nim_registro') ] );
@@ -47,6 +49,10 @@
             $user->setMaterno($otherLastName);
           }
           $name= $user->getNombre() .' '.$apellidos  ;
+
+
+          $password = $passwordEncoder->encodePassword($user, $user->getContrasena());
+          $user->setContrasena($password);
 
           $em->persist($user);
           $em->flush();
@@ -73,11 +79,17 @@
     }
 
     /**
-    *@Route("/login", name="login_nim" )
+    *@Route("/login", name="nim_login" )
     **/
-    public function ipGet(Request $request){
+    public function loginAction(Request $request, AuthenticationUtils $authUtils){
+    $title="Login NIM";
 
-      return $this->redirectToRoute('home');
+      // get the login error if there is one
+    $error = $authUtils->getLastAuthenticationError();
+
+    // last username entered by the user
+    $lastUsername = $authUtils->getLastUsername();
+    return $this->render('demo/login.html.twig',compact("title" ,"error","lastUsername"));
 
     }
 
