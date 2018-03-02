@@ -5,7 +5,7 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
-use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Security\Core\User\AdvancedUserInterface;
 
 /**
  * User
@@ -16,7 +16,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
  * @UniqueEntity("correo", message="El correo ya ha sido utilizado")
  * @UniqueEntity("nickname", message="El nickname ya ha sido utilizado")
  */
-class UsuarioCliente implements UserInterface, \Serializable
+class UsuarioCliente implements AdvancedUserInterface, \Serializable
 {
     /**
      * @var int
@@ -123,6 +123,14 @@ class UsuarioCliente implements UserInterface, \Serializable
      * @ORM\Column(name="keycode", type="string", length=521, nullable=true)
      */
     private $keyCode;
+
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="estatus", type="integer")
+     */
+    private $estatus;
 
 
     /**
@@ -439,6 +447,30 @@ class UsuarioCliente implements UserInterface, \Serializable
             return $this;
         }
 
+        /**
+         * Get the value of Estatus
+         *
+         * @return int
+         */
+        public function getEstatus()
+        {
+            return $this->estatus;
+        }
+
+        /**
+         * Set the value of Estatus
+         *
+         * @param int estatus
+         *
+         * @return self
+         */
+        public function setEstatus($estatus)
+        {
+            $this->estatus = $estatus;
+
+            return $this;
+        }
+
     /**
      * @ORM\PrePersist
      */
@@ -449,6 +481,7 @@ class UsuarioCliente implements UserInterface, \Serializable
                 'salt' => random_bytes(22),
             ];
             $this->keyCode=password_hash($this->contrasena, CRYPT_BLOWFISH, $opciones);
+            $this->estatus=0;
     }
 
       public function getSalt()
@@ -473,6 +506,21 @@ class UsuarioCliente implements UserInterface, \Serializable
 
     }
 
+    public function isAccountNonExpired(){
+      return true;
+    }
+
+    public function isAccountNonLocked(){
+      return true;
+    }
+    public function isCredentialsNonExpired(){
+      return true;
+    }
+    public function isEnabled(){
+      return $this->estatus ===1;
+    }
+
+
 
       /** @see \Serializable::serialize() */
     public function serialize()
@@ -481,6 +529,7 @@ class UsuarioCliente implements UserInterface, \Serializable
             $this->id,
             $this->correo,
             $this->contrasena,
+            $this->estatus
             // see section on salt below
             // $this->salt,
         ));
@@ -493,10 +542,14 @@ class UsuarioCliente implements UserInterface, \Serializable
             $this->id,
             $this->correo,
             $this->contrasena,
+            $this->estatus
             // see section on salt below
             // $this->salt
         ) = unserialize($serialized);
     }
+
+
+
 
 
 
