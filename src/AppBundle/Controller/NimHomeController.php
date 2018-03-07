@@ -87,11 +87,19 @@
       // get the login error if there is one
     $error = $authUtils->getLastAuthenticationError();
 
-    var_dump($error); die;
-
     // last username entered by the user
     $lastUsername = $authUtils->getLastUsername();
     return $this->render('demo/login.html.twig',compact("title" ,"error","lastUsername"));
+
+    }
+
+    /**
+    *@Route("/envio/{token}")
+    **/
+    public function activarUsuario($token){
+      
+
+
 
     }
 

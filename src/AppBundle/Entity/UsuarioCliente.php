@@ -3,9 +3,11 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Event\LifecycleEventArgs;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\AdvancedUserInterface;
+
 
 /**
  * User
@@ -476,13 +478,32 @@ class UsuarioCliente implements AdvancedUserInterface, \Serializable
      */
     public function generaKeyCode()
     {
-            $opciones = [
-                'cost' => 11,
-                'salt' => random_bytes(22),
-            ];
-            $this->keyCode=password_hash($this->contrasena, CRYPT_BLOWFISH, $opciones);
+            $this->keyCode= hash("sha512",random_bytes(5) . $this->getContrasena() . $this->getCorreo()   );
             $this->estatus=0;
     }
+
+
+    /**
+     * @ORM\PostPersist
+     */
+    public function generarTicketActivacion(LifecycleEventArgs $args)
+    {
+      $entity = $args->getObject();
+      $entityManager = $args->getObjectManager();
+
+      $ticket = new Ticket();
+
+      $ticket->setTipo("active_user_nim_token");
+      $ticket->setParametro($entity->getKeyCode());
+      $ticket->setToken(hash("sha512",random_bytes(5). $this->getCorreo() .$this->getContrasena() ) );
+      $entityManager->persist( $ticket  );
+      $entityManager->flush();
+
+    }
+
+
+
+
 
       public function getSalt()
     {

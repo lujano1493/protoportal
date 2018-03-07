@@ -17,7 +17,7 @@ class UsuarioClienteRepository extends EntityRepository implements UserLoaderInt
     {
 
         return $this->createQueryBuilder('u')
-            ->where('u.nickname = :username OR u.correo = :username OR u.keyCode = :username')
+            ->where('u.nickname = :username OR u.correo = :username')
             ->setParameter('username', $username)
             ->getQuery()
             ->getOneOrNullResult();

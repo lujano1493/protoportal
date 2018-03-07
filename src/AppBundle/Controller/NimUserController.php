@@ -19,8 +19,8 @@
       *@Route("/nim_user/profile", name="nim_profile" )
       **/
       public function profileAction(Request $request, AuthenticationUtils $authUtils){
-
-        return new Response("profile ");
+        $title="Perfil NIM";
+        return $this->render('demo/profile.html.twig',compact("title" ));
       }
 
 
