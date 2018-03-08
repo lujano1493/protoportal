@@ -8,10 +8,8 @@
   use Symfony\Component\HttpFoundation\Response;
   use Symfony\Component\Translation\TranslatorInterface;
   use Doctrine\ORM\EntityManagerInterface;
-  use AppBundle\Entity\UsuarioCliente;
-  use AppBundle\Entity\CatalogoGeoIpPais;
-  use AppBundle\Form\UsuarioClienteType;
-  use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+
+  use AppBundle\Service\UserManager;
   use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
   class NimHomeController extends Controller{
@@ -25,57 +23,9 @@
     /**
     * @Route("/registro", name="nim_registro")
     */
-    public function registerAction(Request $request, UserPasswordEncoderInterface $passwordEncoder,\Swift_Mailer $mailer){
+    public function registerAction(UserManager $userManager   ){
 
-      $user= new UsuarioCliente();
-      $form = $this->createForm( UsuarioClienteType::class, $user ,[ 'action' => $this->generateUrl ('nim_registro') ] );
-
-      $form->handleRequest( $request);
-
-      if( $form->isSubmitted() && $form->isValid()  ){
-          $ip =$request->getClientIp();
-          $code_contry= geoip_country_code_by_name($ip);
-          $em = $this->getDoctrine()->getManager();
-          $apellidos =$form->get("apellidos")->getData();
-
-          $lista =preg_split("/[\s,]+/",  $apellidos );
-          $user->setPaterno($lista[0]);
-          $size=count($lista);
-          if($size > 1 ){
-            $otherLastName= "";
-            for( $index=1;$index< $size ; $index++  ) {
-              $otherLastName=  $otherLastName . ' '. $lista[$index];
-            }
-            $user->setMaterno($otherLastName);
-          }
-          $name= $user->getNombre() .' '.$apellidos  ;
-
-
-          $password = $passwordEncoder->encodePassword($user, $user->getContrasena());
-          $user->setContrasena($password);
-
-          $em->persist($user);
-          $em->flush();
-          $message = (new \Swift_Message('Bienvenido'))
-           ->setFrom('webmasternim4@gmail.com')
-           ->setTo('lujano14.93@gmail.com')
-           ->setBody(
-               $this->renderView(
-                   'email/registro.twig.html',
-                   compact("name")
-               ),
-               'text/html'
-           )
-       ;
-
-        $mailer->send($message);
-        return $this->redirectToRoute('home');
-      }
-      else{
-        $title= "Registro de Usuario";
-        $form =$form->createView();
-       return $this->render('demo/registro.html.twig',compact("title","form"));
-      }
+        return $userManager->createUser();
     }
 
     /**
@@ -97,7 +47,7 @@
     *@Route("/envio/{token}")
     **/
     public function activarUsuario($token){
-      
+
 
 
 

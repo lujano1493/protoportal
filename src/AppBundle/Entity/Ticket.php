@@ -8,6 +8,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * Ticket
  *
  * @ORM\Table(name="ticket")
+ * @ORM\HasLifecycleCallbacks
  * @ORM\Entity(repositoryClass="AppBundle\Repository\TicketRepository")
  */
 class Ticket
@@ -178,7 +179,6 @@ class Ticket
      * @ORM\PrePersist
      */
      public function agregarFechaRegistro(){
-
        $this->fechaRegistro= new \DateTime();
      }
 
