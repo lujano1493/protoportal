@@ -494,20 +494,7 @@ class UsuarioCliente implements AdvancedUserInterface, \Serializable
      */
     public function prepararGuardado()
     {
-         $apellidos =  $this->getApellidos();
-        $lista =preg_split("/[\s,]+/",  $apellidos );
-        $this->setPaterno($lista[0]);
-        $size=count($lista);
-        if($size > 1 ){
-          $otherLastName= "";
-          for( $index=1;$index< $size ; $index++  ) {
-            $otherLastName=  $otherLastName . ' '. $lista[$index];
-          }
-          $this->setMaterno($otherLastName);
-        }
-
-        $this->keyCode= hash("sha512",random_bytes(5) . $this->getContrasena() . $this->getCorreo()   );
-        $this->estatus=0;
+        
     }
 
 
@@ -516,17 +503,7 @@ class UsuarioCliente implements AdvancedUserInterface, \Serializable
      */
     public function generarTicketActivacion(LifecycleEventArgs $args)
     {
-      $entity = $args->getObject();
-      $entityManager = $args->getObjectManager();
-
-      $ticket = new Ticket();
-
-      $ticket->setTipo("active_user_nim_token");
-      $ticket->setParametro($entity->getKeyCode());
-      $ticket->setToken(hash("sha512",random_bytes(5). $this->getCorreo() .$this->getContrasena() ) );
-      $entityManager->persist( $ticket  );
-      $entityManager->flush();
-
+   
     }
 
 

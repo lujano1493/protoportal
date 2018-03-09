@@ -30,15 +30,9 @@ services:
         public: true
         tags: ['controller.service_arguments']
 
-    # No funciono para inyectar componentes al servicio intentar con requere
-    # AppBundle\Service\UserManager:
-    #     calls:
-    #         - method: setPasswordEncoder
-    #             arguments:
-    #                 - '@security.user_password_encoder.generic'
-    #         - method: setMailer
-    #            arguments:
-    #               - '@swiftmailer.mailer.default'
+   app.doctrine.user_listener:
+        class: AppBundle\Listener\UserListener
+     
         
         
     # add more services, or override services that need manual wiring
