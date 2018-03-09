@@ -3,6 +3,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * Ticket
@@ -10,6 +11,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Table(name="ticket")
  * @ORM\HasLifecycleCallbacks
  * @ORM\Entity(repositoryClass="AppBundle\Repository\TicketRepository")
+ * @UniqueEntity("token", message="El token ya ha sido utilizado")
  */
 class Ticket
 {
@@ -37,15 +39,24 @@ class Ticket
 
 
     /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fecha_expiracion", type="datetime")
+     */
+    private $fechaExpiracion;
+
+
+
+    /**
     * @var string
-    * @ORM\Column(name="token",type="string", length=512)
+    * @ORM\Column(name="token",type="string", length=512, unique=true)
     */
    private $token;
 
 
    /**
    * @var string
-   * @ORM\Column(name="parametro",type="string", length=512)
+   * @ORM\Column(name="parametro",type="string", length=1024)
    */
   private $parametro;
 
@@ -174,13 +185,46 @@ class Ticket
         return $this;
     }
 
+    /**
+     * Get the value of Fecha Expiracion
+     *
+     * @return \DateTime
+     */
+    public function getFechaExpiracion()
+    {
+        return $this->fechaExpiracion;
+    }
+
+    /**
+     * Set the value of Fecha Expiracion
+     *
+     * @param \DateTime fechaExpiracion
+     *
+     * @return self
+     */
+    public function setFechaExpiracion(\DateTime $fechaExpiracion)
+    {
+        $this->fechaExpiracion = $fechaExpiracion;
+        return $this;
+    }
+
+    public function getExpirationDate($days = 1) {
+        $expired  = new \DateTime();
+        $expired->add(new \DateInterval('P'.$days.'D'));
+        return $expired;
+    }
+
 
     /**
      * @ORM\PrePersist
      */
-     public function agregarFechaRegistro(){
+     public function agregarFechasRegistroExpiracion(){
        $this->fechaRegistro= new \DateTime();
+       $this->fechaExpiracion= $this->getExpirationDate();
      }
+
+
+
 
 }
 

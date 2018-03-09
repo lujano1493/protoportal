@@ -17,6 +17,7 @@ use Symfony\Component\Security\Core\User\AdvancedUserInterface;
  * @ORM\HasLifecycleCallbacks
  * @UniqueEntity("correo", message="El correo ya ha sido utilizado")
  * @UniqueEntity("nickname", message="El nickname ya ha sido utilizado")
+ * @UniqueEntity("keyCode", message="El keycode ya ha sido utilizado")
  */
 class UsuarioCliente implements AdvancedUserInterface, \Serializable
 {
@@ -122,7 +123,7 @@ class UsuarioCliente implements AdvancedUserInterface, \Serializable
     /**
      * @var string
      *
-     * @ORM\Column(name="keycode", type="string", length=521, nullable=true)
+     * @ORM\Column(name="keycode", type="string", length=521, unique=true)
      */
     private $keyCode;
 
@@ -137,10 +138,24 @@ class UsuarioCliente implements AdvancedUserInterface, \Serializable
 
     /**
     * @var  string
-    *   
+    *
     ** */
     private $apellidos;
 
+
+    /**
+     * Set the value of Id
+     *
+     * @param int id
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
+    }
 
     /**
      * Get id
@@ -494,7 +509,7 @@ class UsuarioCliente implements AdvancedUserInterface, \Serializable
      */
     public function prepararGuardado()
     {
-        
+
     }
 
 
@@ -503,7 +518,7 @@ class UsuarioCliente implements AdvancedUserInterface, \Serializable
      */
     public function generarTicketActivacion(LifecycleEventArgs $args)
     {
-   
+
     }
 
 

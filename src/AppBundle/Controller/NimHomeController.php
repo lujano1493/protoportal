@@ -11,6 +11,9 @@
 
   use AppBundle\Service\UserManager;
   use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+  use AppBundle\Entity\Ticket;
+  use AppBundle\Entity\UsuarioCliente;
+  use AppBundle\Util\SerializeFactory;
 
   class NimHomeController extends Controller{
 
@@ -40,11 +43,35 @@
     }
 
     /**
-    *@Route("/envio/{token}")
+    *@Route("/activar/{token}" , name="activa_cuenta")
     **/
-    public function activarUsuario($token){
+    public function activarUsuarioAction($token){
 
+        if(!$token){
+          throw $this->createNotFoundException(
+           'Es necesario ingresar token de activacion'
+          );
+        }
+        $em=$this->getDoctrine()->getManager();
+        $repository = $em->getRepository(Ticket::class);
+        $ticket=$repository->loadTiketByToken($token);
 
+        if(!$ticket ||  $ticket->getTipo() !== "active_user_nim_token" ){
+          throw $this->createNotFoundException(
+           'No fue posible encontrar ticket intente reenviando correo'
+          );
+        }
+
+        $serializer = SerializeFactory::create();
+        $repository = $em->getRepository(UsuarioCliente::class);
+        $json=$ticket->getParametro();
+        $userArray = json_decode( $json  );
+        $user= $repository->find( $userArray->id  );
+        $user->setEstatus(1);
+        $em->persist( $user);
+        $em->remove( $ticket);
+        $em->flush();
+        return $this->redirectToRoute('nim_profile', ['keyCode' =>$user->getKeyCode(),200  ]);
 
 
     }

@@ -8,7 +8,7 @@ use AppBundle\Entity\UsuarioCliente;
 use AppBundle\Entity\Ticket;
 use AppBundle\Service\GeneralManager;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
-
+use AppBundle\Util\SerializeFactory;
 
 class UserListener  extends GeneralManager implements EventSubscriber
 {
@@ -56,7 +56,19 @@ class UserListener  extends GeneralManager implements EventSubscriber
 				$entityManager = $args->getObjectManager();
 				$ticket = new Ticket();
 				$ticket->setTipo("active_user_nim_token");
-				$ticket->setParametro($user->getKeyCode());
+
+				//$serializer = SerializeFactory::create();
+				$array= [
+					'id' => $user->getId(),
+					'nombre' => $user->getNombre(),
+					'apellidos' => $user->getApellidos(),
+					'nickname' =>$user->getNickname(),
+					'correo' =>$user->getCorreo(),
+					'keyCode' => $user->getKeyCode()
+				];
+
+				$json= json_encode($array);
+				$ticket->setParametro($json);
 				$ticket->setToken(hash("sha512",random_bytes(5) . $user->getCorreo() ) );
 				$entityManager->persist( $ticket  );
 				$entityManager->flush();
@@ -72,7 +84,7 @@ class UserListener  extends GeneralManager implements EventSubscriber
 								 compact("name")
 						 ),
 						 'text/html'
-				 ); 
+				 );
 			 $this->mailer->send($message);
 
     	}
