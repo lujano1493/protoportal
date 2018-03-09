@@ -29,6 +29,17 @@ services:
         resource: '../../src/AppBundle/Controller'
         public: true
         tags: ['controller.service_arguments']
+
+    # No funciono para inyectar componentes al servicio intentar con requere
+    # AppBundle\Service\UserManager:
+    #     calls:
+    #         - method: setPasswordEncoder
+    #             arguments:
+    #                 - '@security.user_password_encoder.generic'
+    #         - method: setMailer
+    #            arguments:
+    #               - '@swiftmailer.mailer.default'
+        
         
     # add more services, or override services that need manual wiring
     # AppBundle\Service\ExampleService:

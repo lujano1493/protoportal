@@ -16,10 +16,6 @@
 
 
 
-
-
-
-
     /**
     * @Route("/registro", name="nim_registro")
     */

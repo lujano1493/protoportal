@@ -19,7 +19,7 @@ class UsuarioClienteType extends AbstractType
   {
       $builder
           ->add('nombre', TextType::class, array('label' => 'Nombre Completo' ,'attr'=> array( 'class' =>  'form-control underlined'  ,'placeholder' =>'Ingresa nombre'  )  ))
-          ->add('apellidos', TextType::class, array('label' => false, 'mapped'=>false, 'attr'=> array( 'class' =>  'form-control underlined'  ,'placeholder' =>'Ingresa apellidos'  )  ))
+          ->add('apellidos', TextType::class, array('label' => false, 'attr'=> array( 'class' =>  'form-control underlined'  ,'placeholder' =>'Ingresa apellidos'  )  ))
           ->add('correo', EmailType::class, array('label' => 'Correo', 'attr'=> array( 'class' =>  'form-control underlined'  ,'placeholder' =>'Ingresa correo' )) )
           ->add('fechaNac',  DateType::class, array( 'widget' => 'single_text', 'label' => 'Fecha de Nacimiento', 'attr'=> array( 'class' =>  'form-control underlined'  ,'placeholder' =>'Ingresa fecha de nacimiento' )) )
           ->add('contrasena', RepeatedType::class, array(

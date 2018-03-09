@@ -136,6 +136,13 @@ class UsuarioCliente implements AdvancedUserInterface, \Serializable
 
 
     /**
+    * @var  string
+    *   
+    ** */
+    private $apellidos;
+
+
+    /**
      * Get id
      *
      * @return int
@@ -473,13 +480,34 @@ class UsuarioCliente implements AdvancedUserInterface, \Serializable
             return $this;
         }
 
+        public function getApellidos(){
+            return $this->apellidos;
+        }
+
+        public function setApellidos($apellidos){
+            $this->apellidos=$apellidos;
+            return $this;
+        }
+
     /**
      * @ORM\PrePersist
      */
-    public function generaKeyCode()
+    public function prepararGuardado()
     {
-            $this->keyCode= hash("sha512",random_bytes(5) . $this->getContrasena() . $this->getCorreo()   );
-            $this->estatus=0;
+         $apellidos =  $this->getApellidos();
+        $lista =preg_split("/[\s,]+/",  $apellidos );
+        $this->setPaterno($lista[0]);
+        $size=count($lista);
+        if($size > 1 ){
+          $otherLastName= "";
+          for( $index=1;$index< $size ; $index++  ) {
+            $otherLastName=  $otherLastName . ' '. $lista[$index];
+          }
+          $this->setMaterno($otherLastName);
+        }
+
+        $this->keyCode= hash("sha512",random_bytes(5) . $this->getContrasena() . $this->getCorreo()   );
+        $this->estatus=0;
     }
 
 
