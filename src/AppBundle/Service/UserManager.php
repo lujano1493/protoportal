@@ -6,25 +6,20 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use AppBundle\Entity\UsuarioCliente;
 use AppBundle\Form\UsuarioClienteType;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+
 
 
 class UserManager  extends  GeneralManager{
-
-
-   protected  $passwordEncoder;
-   protected  $mailer;
-
 
   public function createUser(){
     $user= new UsuarioCliente();
     $form = $this->createForm( UsuarioClienteType::class, $user ,[ 'action' => $this->generateUrl ('nim_registro') ] );
     $form->handleRequest( $this->request);
     $em = $this->getDoctrine()->getManager();
-    if( $form->isSubmitted() && $form->isValid()  ){     
+    if( $form->isSubmitted() && $form->isValid()  ){
 
         /**
-          * Librerioa geoIP  para obtener datos de obicacion de usuario 
+          * Librerioa geoIP  para obtener datos de obicacion de usuario
           * para informacion de instalcion y configuracion visite la siguiente pagina
           * http://php.net/manual/es/book.geoip.php
           */
@@ -34,26 +29,8 @@ class UserManager  extends  GeneralManager{
         /** Fin de invocacion de obtencion de codigo por pais  */
 
         $em = $this->getDoctrine()->getManager();
-
         $em->persist($user);
         $em->flush();
-
-
-        $name= $user->getNombre() .' '.$user->getApellidos()  ;
-
-        $message = (new \Swift_Message('Bienvenido'))
-         ->setFrom('webmasternim4@gmail.com')
-         ->setTo(  $user->getCorreo()  )
-         ->setBody(
-             $this->renderView(
-                 'email/registro.twig.html',
-                 compact("name")
-             ),
-             'text/html'
-         )
-     ;
-
-      $this->mailer->send($message);
       return $this->redirectToRoute('home');
     }
     else{
@@ -63,21 +40,6 @@ class UserManager  extends  GeneralManager{
     }
 
   }
-
-  /**
-  * @required
-  */
-  public function setPasswordEncoder(UserPasswordEncoderInterface $passwordEncoder){
-    $this->passwordEncoder= $passwordEncoder;
-  }
-
-  /**
-  * @required
-  */
-  public function setMailer( \Swift_Mailer $mailer   ){
-    $this->mailer= $mailer;
-  }
-
 
 }
 

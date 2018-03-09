@@ -30,11 +30,13 @@ services:
         public: true
         tags: ['controller.service_arguments']
 
-   app.doctrine.user_listener:
+    app.doctrine.user_listener:
+        public: true
         class: AppBundle\Listener\UserListener
-     
-        
-        
+        tags:
+            - { name: doctrine.event_subscriber }
+
+
     # add more services, or override services that need manual wiring
     # AppBundle\Service\ExampleService:
     #     arguments:
