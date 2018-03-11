@@ -36,6 +36,12 @@ services:
         tags:
             - { name: doctrine.event_subscriber }
 
+    app.doctrine.ticket_listener:
+        public: true
+        class: AppBundle\Listener\TicketListener
+        tags:
+            - { name: doctrine.event_subscriber }
+
 
     # add more services, or override services that need manual wiring
     # AppBundle\Service\ExampleService:

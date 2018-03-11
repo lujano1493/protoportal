@@ -589,13 +589,18 @@ class UsuarioCliente implements AdvancedUserInterface, \Serializable
         ) = unserialize($serialized);
     }
 
+    public function generarArray(){
+        return [
+					'id' => $this->getId(),
+					'nombre' => $this->getNombre(),
+					'apellidos' => $this->getApellidos(),
+					'nickname' =>$this->getNickname(),
+					'correo' =>$this->getCorreo(),
+					'keyCode' => $this->getKeyCode()
+				];
 
 
-
-
-
-
-
+    }
 
 
 }

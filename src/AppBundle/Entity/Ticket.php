@@ -15,6 +15,10 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  */
 class Ticket
 {
+
+    const TIPO_ACTIVA_CUENTA_NIM ="active_user_nim_token";
+    const TIPO_REENVIO_CUENTA_NIM ="send_user_nim";
+    const TIPO_REESTABLECER_CONTRASENA_NIM = "restablece_pass_nim";
     /**
      * @var int
      *
@@ -52,6 +56,13 @@ class Ticket
     * @ORM\Column(name="token",type="string", length=512, unique=true)
     */
    private $token;
+
+
+   /**
+   * @var int
+   * @ORM\Column(name="id_entidad",type="integer")
+   */
+   private $idEntidad;
 
 
    /**
@@ -162,6 +173,31 @@ class Ticket
     }
 
     /**
+     * Get the value of Id Entidad
+     *
+     * @return int
+     */
+    public function getIdEntidad()
+    {
+        return $this->idEntidad;
+    }
+
+    /**
+     * Set the value of Id Entidad
+     *
+     * @param int idEntidad
+     *
+     * @return self
+     */
+    public function setIdEntidad($idEntidad)
+    {
+        $this->idEntidad = $idEntidad;
+
+        return $this;
+    }
+
+
+    /**
      * Get the value of Parametro
      *
      * @return string
@@ -222,6 +258,8 @@ class Ticket
        $this->fechaRegistro= new \DateTime();
        $this->fechaExpiracion= $this->getExpirationDate();
      }
+
+
 
 
 

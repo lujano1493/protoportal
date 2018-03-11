@@ -4,6 +4,7 @@ namespace AppBundle\Service;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use AppBundle\Entity\Ticket;
 use AppBundle\Entity\UsuarioCliente;
 use AppBundle\Form\UsuarioClienteType;
 
@@ -38,6 +39,28 @@ class UserManager  extends  GeneralManager{
       $form =$form->createView();
      return $this->render('demo/registro.html.twig',compact("title","form"));
     }
+
+  }
+
+  public function  sendEmail($correo) {
+
+    $em=$this->getDoctrine()->getManager();
+    $repo= $em->getRepository( UsuarioCliente ::class  );
+
+    $user= $repo->findOneByCorreo(  $correo );
+    if($user ===NULL  ){
+      throw $this->createNotFoundException(
+       'No existe correo en el sistema'
+      );
+    }
+
+    if( $user->getEstatus() !== 0  ){
+      throw $this->createNotFoundException(
+       'La cuenta de correo ya se encuentra activa.'
+      );
+    }
+    $array=  $user->generarArray();
+    $this->createToken(Ticket::TIPO_ACTIVA_CUENTA_NIM ,$user->getId() ,$array,$user->getCorreo());
 
   }
 

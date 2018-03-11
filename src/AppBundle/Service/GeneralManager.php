@@ -1,11 +1,13 @@
-<?php 
+<?php
 namespace AppBundle\Service;
 
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use AppBundle\Entity\UsuarioCliente;
+use AppBundle\Entity\Ticket;
 use AppBundle\Form\UsuarioClienteType;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Routing\RouterInterface;
@@ -80,6 +82,63 @@ class GeneralManager{
        return $this->redirect($this->generateUrl($route, $parameters), $status);
    }
 
+   /**
+  * Returns a NotFoundHttpException.
+  *
+  * This will result in a 404 response code. Usage example:
+  *
+  *     throw $this->createNotFoundException('Page not found!');
+  *
+  * @param string          $message  A message
+  * @param \Exception|null $previous The previous exception
+  *
+  * @return NotFoundHttpException
+  *
+  * @final since version 3.4
+  */
+ protected function createNotFoundException($message = 'Not Found', \Exception $previous = null)
+ {
+     return new NotFoundHttpException($message, $previous);
+ }
+
+
+
+   public function createToken($tipo,$idEntidad,$array =[],$extra ='' ){
+
+     $entityManager = $this->getDoctrine()->getManager();
+
+     $repo =$entityManager->getRepository( Ticket::class   );
+
+     $repo->createQueryBuilder("t")
+          ->delete()
+          ->where( " t.idEntidad = :idEntidad" )
+          ->setParameter("idEntidad" ,  $idEntidad)
+          ->getQuery()
+          ->execute();
+
+     $ticket = new Ticket();
+     $ticket->setTipo( $tipo );
+     $ticket->setIdEntidad( $idEntidad );
+     $json= json_encode($array);
+     $ticket->setParametro($json);
+     $token = $this->generateKeySecurity(Ticket::class,'token',$extra  );
+     $ticket->setToken( $token );
+     $entityManager->persist( $ticket  );
+     $entityManager->flush();
+   }
+
+   /**
+   * Funcion necesaria para generar un token de seguridad
+   */
+
+   public function generateKeySecurity( $clazz, $field ,  $extra =''  ,$unique=true ){
+           $repo=  $this->getDoctrine()->getManager()->getRepository(   $clazz  );
+           $keySecurity =   hash("sha512",random_bytes(5) . $extra);
+           if( $unique &&  $repo->hasAny(  [  $field => $keySecurity   ]   )  ){
+               $keySecurity= $this->generateKeySecurity( $class,$field, $extra,true  );
+           }
+           return $keySecurity;
+   }
 
 
 

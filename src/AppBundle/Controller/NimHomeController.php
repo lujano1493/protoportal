@@ -11,9 +11,12 @@
 
   use AppBundle\Service\UserManager;
   use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+  use Symfony\Component\Form\Extension\Core\Type\EmailType;
+  use Symfony\Component\Form\Extension\Core\Type\SubmitType;
   use AppBundle\Entity\Ticket;
   use AppBundle\Entity\UsuarioCliente;
   use AppBundle\Util\SerializeFactory;
+  use Symfony\Component\Validator\Constraints as Assert;
 
   class NimHomeController extends Controller{
 
@@ -43,7 +46,7 @@
     }
 
     /**
-    *@Route("/activar/{token}" , name="activa_cuenta")
+    *@Route("/activar/{token}" , name="activa_cuenta_nim")
     **/
     public function activarUsuarioAction($token){
 
@@ -56,13 +59,12 @@
         $repository = $em->getRepository(Ticket::class);
         $ticket=$repository->loadTiketByToken($token);
 
-        if(!$ticket ||  $ticket->getTipo() !== "active_user_nim_token" ){
+        if(!$ticket ||  $ticket->getTipo() !==  Ticket::TIPO_ACTIVA_CUENTA_NIM   ){
           throw $this->createNotFoundException(
            'No fue posible encontrar ticket intente reenviando correo'
           );
         }
 
-        $serializer = SerializeFactory::create();
         $repository = $em->getRepository(UsuarioCliente::class);
         $json=$ticket->getParametro();
         $userArray = json_decode( $json  );
@@ -72,9 +74,46 @@
         $em->remove( $ticket);
         $em->flush();
         return $this->redirectToRoute('nim_profile', ['keyCode' =>$user->getKeyCode(),200  ]);
+    }
+
+    /**
+    * @Route("/reenviar_correo" , name="reenviar_correo_nim"  )
+    *
+    **/
+    public function reenviarCorreoAction(Request $request , UserManager $userManager){
+      $title= "Reenviar Correo";
+      $defaultData= [ "correo" => "" ];
+      $form = $this->createFormBuilder($defaultData,[ 'action' => $this->generateUrl ('reenviar_correo_nim') ] )
+        ->add('correo', EmailType::class, array('label' => 'Correo',
+          'attr'=> array(
+            'class' =>  'form-control underlined' ,
+            'placeholder' =>'Ingresa correo'
+          ),
+          'constraints' => new Assert\Email()
+          ) )
+         ->add('registrar', SubmitType::class, array('label' => 'Registrarse', 'attr' => array('class' => 'btn btn-block btn-primary')) )
+        ->getForm();
+      $form->handleRequest($request);
+      if ($form->isSubmitted() && $form->isValid()) {
+        $data = $form->getData();
+        $userManager->sendEmail( $data['correo'] );
+        
+        return $this->redirectToRoute('home');
+
+      }
+      else{
+          $form =$form->createView();
+          return $this->render( "demo/reenviarcorreo.html.twig",compact("title", "form")  );
+      }
+
+
+
+
 
 
     }
+
+
 
     /**
     *@Route("/envio/{name}")

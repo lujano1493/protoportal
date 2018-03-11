@@ -1,0 +1,31 @@
+{% extends "nim.base.html.twig" %}
+
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+
+
+{% block content %}
+	<div class="auth">
+            <div class="auth-container">
+                <div class="card">
+                    <header class="auth-header">
+                        <h1 class="auth-title">
+                             Reenvio de Correo  </h1>
+                    </header>
+                    <div class="auth-content">
+                        {{ form_start(form) }}
+                             {{ form_errors(form) }}
+                            <div class="form-group">
+                              {{ form_row(form.correo) }}
+                            </div>
+                             {{form_widget(form.registrar) }}
+                       {{ form_end(form) }}
+                    </div>
+                </div>
+                <div class="text-center">
+                    <a href="\" class="btn btn-secondary btn-sm">
+                        <i class="fa fa-arrow-left"></i>  Regresar a Inicio </a>
+                </div>
+            </div>
+        </div>
+
+ {% endblock %}

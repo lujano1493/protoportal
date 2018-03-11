@@ -29,8 +29,8 @@ class UserListener  extends GeneralManager implements EventSubscriber
 
 	      $password = $this->passwordEncoder->encodePassword($user, $user->getContrasena());
        	$user->setContrasena($password);
-
-       	$user->setKeyCode (hash("sha512",random_bytes(5)  . $user->getCorreo()   ) );
+				$keycode = $this->generateKeySecurity( UsuarioCliente::class,'keyCode' , $user->getCorreo()     );
+       	$user->setKeyCode ( $keycode );
 				$user->setEstatus(0);
 
        	$apellidos =  $user->getApellidos();
@@ -40,7 +40,7 @@ class UserListener  extends GeneralManager implements EventSubscriber
 				if($size > 1 ){
 					$otherLastName= "";
 					for( $index=1;$index< $size ; $index++  ) {
-					$otherLastName=  $otherLastName . ' '. $lista[$index];
+						$otherLastName=  $otherLastName . ' '. $lista[$index];
 					}
 					$user->setMaterno($otherLastName);
 				}
@@ -53,39 +53,9 @@ class UserListener  extends GeneralManager implements EventSubscriber
 				if (!$user instanceof UsuarioCliente) {
 				return;
 				}
-				$entityManager = $args->getObjectManager();
-				$ticket = new Ticket();
-				$ticket->setTipo("active_user_nim_token");
-
 				//$serializer = SerializeFactory::create();
-				$array= [
-					'id' => $user->getId(),
-					'nombre' => $user->getNombre(),
-					'apellidos' => $user->getApellidos(),
-					'nickname' =>$user->getNickname(),
-					'correo' =>$user->getCorreo(),
-					'keyCode' => $user->getKeyCode()
-				];
-
-				$json= json_encode($array);
-				$ticket->setParametro($json);
-				$ticket->setToken(hash("sha512",random_bytes(5) . $user->getCorreo() ) );
-				$entityManager->persist( $ticket  );
-				$entityManager->flush();
-
-				$name= $user->getNombre() .' '.$user->getApellidos()  ;
-
-				$message = (new \Swift_Message('Bienvenido'))
-				 ->setFrom('webmasternim4@gmail.com')
-				 ->setTo(  $user->getCorreo()  )
-				 ->setBody(
-						 $this->renderView(
-								 'email/registro.twig.html',
-								 compact("name")
-						 ),
-						 'text/html'
-				 );
-			 $this->mailer->send($message);
+				$array=  $user->generarArray();
+				$this->createToken(Ticket::TIPO_ACTIVA_CUENTA_NIM ,$user->getId() ,$array,$user->getCorreo());
 
     	}
 
@@ -102,6 +72,7 @@ class UserListener  extends GeneralManager implements EventSubscriber
 			public function setMailer( \Swift_Mailer $mailer   ){
 				$this->mailer= $mailer;
 			}
+
 
 
 
