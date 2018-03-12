@@ -16,7 +16,7 @@ class UserListener  extends GeneralManager implements EventSubscriber
 	 protected  $mailer;
 
 		public function getSubscribedEvents(){
-			 return ['prePersist','postPersist'];
+			 return ['prePersist','preUpdate','postPersist'];
 
    	 	}
 
@@ -46,6 +46,18 @@ class UserListener  extends GeneralManager implements EventSubscriber
 				}
 
     	}
+
+			public function preUpdate(LifecycleEventArgs $args){
+				$user = $args->getEntity();
+				if (!$user instanceof UsuarioCliente) {
+					return;
+				}
+				if( $user->getContrasena() != null ){
+					$password = $this->passwordEncoder->encodePassword($user, $user->getContrasena());
+					$user->setContrasena($password);
+				}
+
+		}
 
     	public function postPersist(LifecycleEventArgs $args){
 

@@ -8,15 +8,14 @@
   use Symfony\Component\HttpFoundation\Response;
   use Symfony\Component\Translation\TranslatorInterface;
   use Doctrine\ORM\EntityManagerInterface;
+  use AppBundle\Form\CorreoType;
+  use AppBundle\Form\RecuperarContrasenaType;
 
   use AppBundle\Service\UserManager;
   use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
-  use Symfony\Component\Form\Extension\Core\Type\EmailType;
-  use Symfony\Component\Form\Extension\Core\Type\SubmitType;
   use AppBundle\Entity\Ticket;
   use AppBundle\Entity\UsuarioCliente;
   use AppBundle\Util\SerializeFactory;
-  use Symfony\Component\Validator\Constraints as Assert;
 
   class NimHomeController extends Controller{
 
@@ -83,65 +82,88 @@
     public function reenviarCorreoAction(Request $request , UserManager $userManager){
       $title= "Reenviar Correo";
       $defaultData= [ "correo" => "" ];
-      $form = $this->createFormBuilder($defaultData,[ 'action' => $this->generateUrl ('reenviar_correo_nim') ] )
-        ->add('correo', EmailType::class, array('label' => 'Correo',
-          'attr'=> array(
-            'class' =>  'form-control underlined' ,
-            'placeholder' =>'Ingresa correo'
-          ),
-          'constraints' => new Assert\Email()
-          ) )
-         ->add('registrar', SubmitType::class, array('label' => 'Registrarse', 'attr' => array('class' => 'btn btn-block btn-primary')) )
-        ->getForm();
+      $form = $this->createForm(  CorreoType::class ,$defaultData, [ 'action' => $this->generateUrl ('reenviar_correo_nim') ] );
       $form->handleRequest($request);
       if ($form->isSubmitted() && $form->isValid()) {
         $data = $form->getData();
         $userManager->sendEmail( $data['correo'] );
-        
         return $this->redirectToRoute('home');
-
       }
       else{
           $form =$form->createView();
           return $this->render( "demo/reenviarcorreo.html.twig",compact("title", "form")  );
       }
 
+    }
 
+    /**
+    * @Route("/recuperar_contrasena" , name="recuperar_contrasena_nim"  )
+    *
+    **/
+    public function recuperarContrasenaAction(Request $request , UserManager $userManager){
 
-
+      $title= "Recuperar Contrasena";
+      $defaultData= [ "correo" => "" ];
+      $form = $this->createForm(  CorreoType::class ,$defaultData, [ 'action' => $this->generateUrl ('recuperar_contrasena_nim') ] );
+      $form->handleRequest($request);
+      if ($form->isSubmitted() && $form->isValid()) {
+        $data = $form->getData();
+        $userManager->recuperarContrasena( $data['correo'] );
+        return $this->redirectToRoute('home');
+      }
+      else{
+          $form =$form->createView();
+          return $this->render( "demo/recuperar_contrasena.html.twig",compact("title", "form")  );
+      }
 
 
     }
 
-
-
     /**
-    *@Route("/envio/{name}")
-    **/
-    public function envioAction($name, \Swift_Mailer $mailer)
-{
-    $message = (new \Swift_Message('Hello Email'))
-        ->setFrom('nimWebMaster@nim.com')
-        ->setTo('lujano14.93@gmail.com')
-        ->setBody(
-            $this->renderView(
-                // app/Resources/views/Emails/registration.html.twig
-                "email/registro.twig.html",
-                array('name' => $name)
-            ),
-            'text/html'
-        )
+    * @Route("/restablecer_contrasena/{token}" , name="restablece_contrasena_nim"  )
+    *
+    */
 
-    ;
+    public function restablecerContrasenaAction($token ,Request $request , UserManager $userManager){
 
-    $mailer->send($message);
 
-    // or, you can also fetch the mailer service this way
-    // $this->get('mailer')->send($message);
+      if(!$token){
+        throw $this->createNotFoundException(
+         'Es necesario ingresar token de recuperación de contraseña'
+        );
+      }
+      $em=$this->getDoctrine()->getManager();
+      $repository = $em->getRepository(Ticket::class);
+      $ticket=$repository->loadTiketByToken($token);
 
-  return new Response("Correo enviado.");
-}
+      $title= "Restablecer Contraseña";
+      $defaultData= [ "correo" => "" ];
+      $form = $this->createForm(  RecuperarContrasenaType::class ,$defaultData, [ 'action' => $this->generateUrl ('restablece_contrasena_nim' , compact('token')  ) ] );
+      $form->handleRequest($request);
 
+
+      if(!$ticket ||  $ticket->getTipo() !==  Ticket::TIPO_REESTABLECER_CONTRASENA_NIM   ){
+        throw $this->createNotFoundException(
+         'No fue posible encontrar ticket intente nuevamente'
+        );
+      }
+
+      if ($form->isSubmitted() && $form->isValid()) {
+        $data = $form->getData();
+        //userManager->recuperarContrasena( $data['correo'] );
+        $repo = $em->getRepository( UsuarioCliente::class);
+        $user= $repo ->find(  $ticket->getIdEntidad() );
+        $user->setContrasena(  $data['contrasena'] );
+        $em->remove( $ticket);
+        $em->flush();
+        return $this->redirectToRoute('home');
+      }
+      else{
+          $form =$form->createView();
+          return $this->render( "demo/restablece_contrasena.html.twig",compact("title", "form")  );
+      }
+
+    }
 
 
 

@@ -64,6 +64,25 @@ class UserManager  extends  GeneralManager{
 
   }
 
+  public function  recuperarContrasena($correo) {
+
+    $em=$this->getDoctrine()->getManager();
+    $repo= $em->getRepository( UsuarioCliente ::class  );
+
+    $user= $repo->findOneByCorreo(  $correo );
+    if($user ===NULL  ){
+      throw $this->createNotFoundException(
+       'No existe correo en el sistema.'
+      );
+    }
+    $array=  $user->generarArray();
+    $this->createToken(Ticket::TIPO_REESTABLECER_CONTRASENA_NIM ,$user->getId() ,$array,$user->getCorreo());
+
+  }
+
+
+
+
 }
 
 

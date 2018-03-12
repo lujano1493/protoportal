@@ -109,6 +109,7 @@ class GeneralManager{
 
      $repo =$entityManager->getRepository( Ticket::class   );
 
+    /* Eñliminamos token anteriores  */ 
      $repo->createQueryBuilder("t")
           ->delete()
           ->where( " t.idEntidad = :idEntidad" )
