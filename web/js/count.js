@@ -8,7 +8,7 @@ $(document).ready(function (){
 
 function getTime() {
 	now = new Date();
-	fecha = new Date("2018-02-28 23:59:59 UTC");
+	fecha = new Date("2018-03-31 23:59:59 UTC");
 	days = (fecha - now) / 1000 / 60 / 60 / 24;
 	daysRound = Math.floor(days);
 	hours = (fecha - now) / 1000 / 60 / 60 - (24 * daysRound);

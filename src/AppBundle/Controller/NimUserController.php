@@ -20,7 +20,7 @@
       **/
       public function profileAction(Request $request, AuthenticationUtils $authUtils){
         $title="Perfil NIM";
-        return $this->render('demo/profile.html.twig',compact("title" ));
+        return $this->render('nim/profile.html.twig',compact("title" ));
       }
 
 

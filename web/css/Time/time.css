@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css?family=Advent+Pro|Audiowide|Cuprum|Great+Vibes|Nothing+You+Could+Do|Ovo');
 
 /*
 
@@ -23,7 +22,6 @@ background: rgba(0, 128, 0,1);
 }
 .reloj h2.counter1{
 	color:rgba(0, 128, 0,1);
-*/
 	display: inline-block;
 	font-family: 'Ovo', serif;
 	font-size: 60px;

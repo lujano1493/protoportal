@@ -45,8 +45,14 @@
                                 <button type="submit" class="btn btn-block btn-primary">Ingresar</button>
                             </div>
                             <div class="form-group">
-                                <p class="text-muted text-center">¿aun no estas registrado?
+                                <p class="text-muted text-center">¿No estas registrado?
                                     <a href="/registro">¡Registrate!</a>
+                                </p>
+                                <p class="text-muted text-center">¿Aún no llega tu correo de activación?
+                                    <a href="/reenviar_correo">¡Reenviar correo!</a>
+                                </p>
+                                <p class="text-muted text-center">¿Olvidaste tu contraseña?
+                                    <a href="/recuperar_contrasena">¡Restablece tu contraseña!</a>
                                 </p>
                             </div>
 
@@ -55,7 +61,7 @@
                     </div>
                 </div>
                 <div class="text-center">
-                    <a href="index.html" class="btn btn-secondary btn-sm">
+                    <a href="{{ path('home') }}" class="btn btn-secondary btn-sm">
                         <i class="fa fa-arrow-left"></i>  Regresar a Inicio </a>
                 </div>
             </div>

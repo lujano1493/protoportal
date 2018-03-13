@@ -6,9 +6,10 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item active"><a class="nav-link" href="#Home">Home <span class="sr-only">(current)</span></a></li>
-                    
-                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Proyecto</a>
-                        <div class="dropdown-menu">
+                    <li class="nav-item dropdown" >
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Proyecto</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                           <a class="dropdown-item" href="#Proyecto">Ficha Tecnica</a>
                           <a class="dropdown-item" href="#Benef">Beneficios</a>
                           <a class="dropdown-item" href="#Bono">Bono</a>
@@ -16,14 +17,19 @@
                           <a class="dropdown-item" href="#RoadMap">RoadMap</a>
                           <a class="dropdown-item" href="#Equipo">Equipo</a>
                         </div>
+
+
+                     </li>
+                    
+                  
                     
                     <li class="nav-item" ><a class="nav-link" href="#Whitepaper">Whitepaper</a></li>
                     <li class="nav-item" ><a class="nav-link" href="#TimeLine">Linea de Tiempo</a></li>
                     <li class="nav-item" ><a class="nav-link" href="#Producto">Contacto</a></li>
                     <li class="nav-item" ><a class="nav-link" href="#Producto">Faq</a></li>
-                    <li class="nav-item" ><a class="nav-link" href="#Entrar">Entrar</a></li>
+                    <li class="nav-item" ><a class="nav-link" href="{{ path('nim_login') }}">Entrar</a></li>
                 </ul>
             </div>
-        </nav>
+  </nav>
 
-        hola
+      

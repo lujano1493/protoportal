@@ -1,6 +1,5 @@
-@import url('https://fonts.googleapis.com/css?family=Advent+Pro:200,300,400|Nothing+You+Could+Do|Ovo|Raleway:200i,300i');
+
 @import url("Pag/Home.css");
-@import url("Pag/Producto.css");
 @import url("Pag/Proyecto.css");
 @import url("Pag/faq.css");
 @import url("highcharts.css");
@@ -33,7 +32,7 @@
 }
 .dropdown-menu{
     border: none;
-    background: transparent;
+    background: linear-gradient(to bottom, #003803 30%, #2a6600 100%);
 }
 .dropdown-item{
     color: azure;

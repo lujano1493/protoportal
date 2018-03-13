@@ -37,7 +37,7 @@ class UserManager  extends  GeneralManager{
     else{
       $title= "Registro de Usuario";
       $form =$form->createView();
-     return $this->render('demo/registro.html.twig',compact("title","form"));
+     return $this->render('nim/registro.html.twig',compact("title","form"));
     }
 
   }

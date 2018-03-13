@@ -20,6 +20,17 @@
   class NimHomeController extends Controller{
 
 
+    /**
+    * @Route("/" , name="home")
+    */
+
+    public function indexAction(){
+      
+      return $this->render("nim/inicio.html.twig" );
+
+    }
+
+
 
     /**
     * @Route("/registro", name="nim_registro")
@@ -40,7 +51,7 @@
 
     // last username entered by the user
     $lastUsername = $authUtils->getLastUsername();
-    return $this->render('demo/login.html.twig',compact("title" ,"error","lastUsername"));
+    return $this->render('nim/login.html.twig',compact("title" ,"error","lastUsername"));
 
     }
 
@@ -91,7 +102,7 @@
       }
       else{
           $form =$form->createView();
-          return $this->render( "demo/reenviarcorreo.html.twig",compact("title", "form")  );
+          return $this->render( "nim/reenviarcorreo.html.twig",compact("title", "form")  );
       }
 
     }
@@ -113,7 +124,7 @@
       }
       else{
           $form =$form->createView();
-          return $this->render( "demo/recuperar_contrasena.html.twig",compact("title", "form")  );
+          return $this->render( "nim/recuperar_contrasena.html.twig",compact("title", "form")  );
       }
 
 
@@ -138,10 +149,17 @@
 
       $title= "Restablecer Contraseña";
       $defaultData= [ "correo" => "" ];
-      $form = $this->createForm(  RecuperarContrasenaType::class ,$defaultData, [ 'action' => $this->generateUrl ('restablece_contrasena_nim' , compact('token')  ) ] );
+      $form = $this->createForm(
+          RecuperarContrasenaType::class ,
+          $defaultData,
+          [
+              'action' => $this->generateUrl (
+                  'restablece_contrasena_nim' ,
+                  compact('token')
+                  )
+          ]
+        );
       $form->handleRequest($request);
-
-
       if(!$ticket ||  $ticket->getTipo() !==  Ticket::TIPO_REESTABLECER_CONTRASENA_NIM   ){
         throw $this->createNotFoundException(
          'No fue posible encontrar ticket intente nuevamente'
@@ -160,7 +178,7 @@
       }
       else{
           $form =$form->createView();
-          return $this->render( "demo/restablece_contrasena.html.twig",compact("title", "form")  );
+          return $this->render( "nim/restablece_contrasena.html.twig",compact("title", "form")  );
       }
 
     }

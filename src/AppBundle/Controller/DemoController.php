@@ -19,7 +19,7 @@ class DemoController extends Controller
       $param= $request->get("opc");
  		$title= "Template ";
         // replace this example code with whatever you need
-        return $this->render('demo/theme.html.twig', compact("title"));
+        return $this->render('nim/theme.html.twig', compact("title"));
     }
 
 
@@ -32,7 +32,7 @@ class DemoController extends Controller
       $param= $request->get("opc");
         $title= "Demo ";
         // replace this example code with whatever you need
-        return $this->render('demo/inicio.html.twig', compact("title"));
+        return $this->render('nim/inicio.html.twig', compact("title"));
     }
 
     /**
@@ -41,7 +41,7 @@ class DemoController extends Controller
 	public function actionRegistro(Request $request){
 		 $title= "Registro de Usuario";
 
-		return $this->render('demo/registro.html.twig',compact("title"));
+		return $this->render('nim/registro.html.twig',compact("title"));
 
 	}
 
