@@ -120,8 +120,9 @@
       $form->handleRequest($request);
       if ($form->isSubmitted() && $form->isValid()) {
         $data = $form->getData();
-        $userManager->recuperarContrasena( $data['correo'] );
-        $this->success("Se ha enviado un correo para recuparación de contraseña.");
+        if($userManager->recuperarContrasena( $data['correo'] )){
+          $this->success("Se ha enviado un correo para recuparación de contraseña.");
+        }
         return $this->redirectToRoute('home');
       }
       else{

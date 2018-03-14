@@ -70,13 +70,12 @@ class UserManager  extends  GeneralManager{
 
     $user= $repo->findOneByCorreo(  $correo );
     if($user ===NULL  ){
-      throw $this->createNotFoundException(
-       'No existe correo en el sistema.'
-      );
+      $this->error( "No existe correo en el sistema." );
+      return false;
     }
     $array=  $user->generarArray();
     $this->createToken(Ticket::TIPO_REESTABLECER_CONTRASENA_NIM ,$user->getId() ,$array,$user->getCorreo());
-
+    return true;
   }
 
 
