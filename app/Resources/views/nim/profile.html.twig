@@ -1,13 +1,121 @@
 {% extends "nim.base.html.twig" %}
 
 
+
+
+
 {% block content %}
 
+  <section id="cover">
+
+<div class="card panel-info">
+            <div class="card-header">
+              <h3 class="panel-title">INFORMACIÓN PERSONAL</h3>
+            </div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-3 " align="center"> 
+                		{% image 'img/avatar.png' %}
+						    <img class="img-circle img-responsive" src="{{ asset_url }}" width="70%" alt="Usuario" />
+						{% endimage %}
+                </div>
+               
+                <div class="col-9  "> 
+                  <table class="table table-user-information">
+                    <tbody>
+                      <tr>
+                        <td>Nombre:</td>
+                        <td> {{ app.user.nombre  }}</td>
+                      </tr>
+                      <tr>
+                        <td>Correo:</td>
+                        <td>{{ app.user.correo  }}</td>
+                      </tr>
+                      <tr>
+                        <td>Fecha de Nacimiento:</td>
+                        <td>{{ app.user.fechaNac | date('d/m/Y') }}</td>
+                     
+                    </tbody>
+                  </table>
+                  
+                </div>
+              </div>
+            </div>
+            <div class="card-header">
+              <h3 class="panel-title">DOCUMENTACION</h3>
+            </div>
+            <div class="card-body">
+              <div class="row">
+            
+                <div class=" col-9  "> 
+                  <table class="table table-user-information">
+                    <tbody>
+                      <tr>
+                        <td>FOTO DOCUMENTO:</td>
+                        <td>Programming</td>
+                      </tr>
+                      <tr>
+                        <td>Certificado de Notas/ICFES:</td>
+                        <td>06/23/2013</td>
+                      </tr>
+                      <tr>
+                        <td>Certificado de residencia:</td>
+                        <td>01/24/1988</td>
+                      </tr>
+                   
+                      <tr>
+                        <td>Recibo Publico:</td>
+                        <td>Male</td>
+                      </tr>
+                     
+                    </tbody>
+                  </table>
+                  
+                  <a href="#" class="btn btn-primary">Actualizar</a>
+                  </div>
+              </div>
+            </div>
+             <div class="card-header">
+              <h3 class="panel-title">CAMBIO CONTRASEÑA</h3>
+            </div>
+            <div class="card-body">
+              <div class="row">
+               
+                <div class=" col-9  "> 
+                  <table class="table table-user-information">
+                    <tbody>
+                      <tr>
+                        <td>Contraseña:</td>
+                        <td>Programming</td>
+                      </tr>
+                      <tr>
+                        <td>Nueva Contraseña:</td>
+                        <td>06/23/2013</td>
+                      </tr>
+                      <tr>
+                        <td>Confirmar Nueva Contraseña:</td>
+                        <td>01/24/1988</td>
+                      </tr>
+                     
+                    </tbody>
+                  </table>
+                  
+                  <a href="#" class="btn btn-primary">Cambiar Contraseña</a>
+                  </div>
+              </div>
+            </div>
+            
+            
+          </div>
+
+	
+        
+</section>
+
+    
 
 
-				<a href="/logout"> Salir </a>
 
  {% endblock %}
-
 
 

@@ -97,7 +97,7 @@ Highcharts.chart('container', {
             name: 'MARKETING Y PUBLICIDAD',
             y: 10
         }, {
-            name: 'LEGAL Y ADMINISTRACION',
+            name: 'LEGAL Y ADMINISTRACIÓN',
             y: 5
         }, {
             name: 'EQUIPO Y FUNDADORES',
@@ -114,7 +114,7 @@ Highcharts.chart('container2', {
         type: 'pie'
     },
     title: {
-        text: 'DISTRIBUCION DE TOKENS'
+        text: 'DISTRIBUCIÓN DE TOKENS'
     },
     tooltip: {
         pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'

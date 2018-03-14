@@ -3,7 +3,6 @@
   namespace AppBundle\Controller;
 
   use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-  use Symfony\Bundle\FrameworkBundle\Controller\Controller;
   use Symfony\Component\HttpFoundation\Request;
   use Symfony\Component\HttpFoundation\Response;
   use Symfony\Component\Translation\TranslatorInterface;
@@ -13,7 +12,7 @@
   use AppBundle\Form\UsuarioClienteType;
   use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
-  class NimUserController extends Controller{
+  class NimUserController extends GeneralController{
 
       /**
       *@Route("/nim_user/profile", name="nim_profile" )

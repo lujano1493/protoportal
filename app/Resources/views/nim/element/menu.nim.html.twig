@@ -2,9 +2,13 @@
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" aria-haspopup="true">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <a class="navbar-brand" href="#"><div class="img"></div></a>
+            <a class="navbar-brand" href="{{ path('home') }}"><div class="img"></div></a>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
+                  {% if  app.user is defined and   app.user is not empty  %}
+                     <li class="nav-item" ><a class="nav-link" href="{{ path('nim_profile') }}">Perfil</a></li>
+                     <li class="nav-item" ><a class="nav-link" href="/logout">Salir</a></li>
+                  {% else %}
                     <li class="nav-item active"><a class="nav-link" href="#Home">Home <span class="sr-only">(current)</span></a></li>
                     <li class="nav-item dropdown" >
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -17,17 +21,14 @@
                           <a class="dropdown-item" href="#RoadMap">RoadMap</a>
                           <a class="dropdown-item" href="#Equipo">Equipo</a>
                         </div>
-
-
                      </li>
-                    
-                  
-                    
                     <li class="nav-item" ><a class="nav-link" href="#Whitepaper">Whitepaper</a></li>
                     <li class="nav-item" ><a class="nav-link" href="#TimeLine">Linea de Tiempo</a></li>
                     <li class="nav-item" ><a class="nav-link" href="#Producto">Contacto</a></li>
                     <li class="nav-item" ><a class="nav-link" href="#Producto">Faq</a></li>
                     <li class="nav-item" ><a class="nav-link" href="{{ path('nim_login') }}">Entrar</a></li>
+                  {% endif %}
+
                 </ul>
             </div>
   </nav>

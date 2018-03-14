@@ -32,6 +32,7 @@ class UserManager  extends  GeneralManager{
         $em = $this->getDoctrine()->getManager();
         $em->persist($user);
         $em->flush();
+        $this->success("El registro se realizó correctamente. Ingrese a su correo para activar cuenta. ");
       return $this->redirectToRoute('home');
     }
     else{
@@ -49,19 +50,17 @@ class UserManager  extends  GeneralManager{
 
     $user= $repo->findOneByCorreo(  $correo );
     if($user ===NULL  ){
-      throw $this->createNotFoundException(
-       'No existe correo en el sistema'
-      );
+      $this->error( "No existe correo en el sistema." );
+      return false;
     }
 
     if( $user->getEstatus() !== 0  ){
-      throw $this->createNotFoundException(
-       'La cuenta de correo ya se encuentra activa.'
-      );
+        $this->error( "La cuenta de correo ya se encuentra activa." );
+        return false;
     }
     $array=  $user->generarArray();
     $this->createToken(Ticket::TIPO_ACTIVA_CUENTA_NIM ,$user->getId() ,$array,$user->getCorreo());
-
+    return true;
   }
 
   public function  recuperarContrasena($correo) {

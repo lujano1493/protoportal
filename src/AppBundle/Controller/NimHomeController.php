@@ -3,7 +3,6 @@
   namespace AppBundle\Controller;
 
   use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-  use Symfony\Bundle\FrameworkBundle\Controller\Controller;
   use Symfony\Component\HttpFoundation\Request;
   use Symfony\Component\HttpFoundation\Response;
   use Symfony\Component\Translation\TranslatorInterface;
@@ -17,7 +16,7 @@
   use AppBundle\Entity\UsuarioCliente;
   use AppBundle\Util\SerializeFactory;
 
-  class NimHomeController extends Controller{
+  class NimHomeController extends GeneralController{
 
 
     /**
@@ -25,7 +24,6 @@
     */
 
     public function indexAction(){
-      
       return $this->render("nim/inicio.html.twig" );
 
     }
@@ -61,18 +59,16 @@
     public function activarUsuarioAction($token){
 
         if(!$token){
-          throw $this->createNotFoundException(
-           'Es necesario ingresar token de activacion'
-          );
+          $this->error("Es necesario ingresar token de activación.");
+          return $this->redirectToRoute("home");
         }
         $em=$this->getDoctrine()->getManager();
         $repository = $em->getRepository(Ticket::class);
         $ticket=$repository->loadTiketByToken($token);
 
         if(!$ticket ||  $ticket->getTipo() !==  Ticket::TIPO_ACTIVA_CUENTA_NIM   ){
-          throw $this->createNotFoundException(
-           'No fue posible encontrar ticket intente reenviando correo'
-          );
+          $this->error("No fue posible encontrar ticket intente reenviando correo.");
+          return $this->redirectToRoute("home");
         }
 
         $repository = $em->getRepository(UsuarioCliente::class);
@@ -83,6 +79,7 @@
         $em->persist( $user);
         $em->remove( $ticket);
         $em->flush();
+        $this->success("Su cuenta de usuario ha sido activada. Ahora ya puede ingresar a su cuenta de NIM.");
         return $this->redirectToRoute('nim_profile', ['keyCode' =>$user->getKeyCode(),200  ]);
     }
 
@@ -97,8 +94,12 @@
       $form->handleRequest($request);
       if ($form->isSubmitted() && $form->isValid()) {
         $data = $form->getData();
-        $userManager->sendEmail( $data['correo'] );
-        return $this->redirectToRoute('home');
+        if($userManager->sendEmail( $data['correo'] )){
+          $this->success("Se ha reenviado el correo de activación.");
+        }
+          return $this->redirectToRoute('home');
+
+
       }
       else{
           $form =$form->createView();
@@ -120,6 +121,7 @@
       if ($form->isSubmitted() && $form->isValid()) {
         $data = $form->getData();
         $userManager->recuperarContrasena( $data['correo'] );
+        $this->success("Se ha enviado un correo para recuparación de contraseña.");
         return $this->redirectToRoute('home');
       }
       else{
@@ -139,9 +141,8 @@
 
 
       if(!$token){
-        throw $this->createNotFoundException(
-         'Es necesario ingresar token de recuperación de contraseña'
-        );
+        $this->error("Es necesario ingresar token de recuperación de contraseña.");
+        return $this->redirectToRoute("home");
       }
       $em=$this->getDoctrine()->getManager();
       $repository = $em->getRepository(Ticket::class);
@@ -161,9 +162,8 @@
         );
       $form->handleRequest($request);
       if(!$ticket ||  $ticket->getTipo() !==  Ticket::TIPO_REESTABLECER_CONTRASENA_NIM   ){
-        throw $this->createNotFoundException(
-         'No fue posible encontrar ticket intente nuevamente'
-        );
+        $this->error("No fue posible encontrar ticket para recuperar contraseña. Intente nuevamente enviando un correo");
+        return $this->redirectToRoute("home");
       }
 
       if ($form->isSubmitted() && $form->isValid()) {
@@ -174,6 +174,7 @@
         $user->setContrasena(  $data['contrasena'] );
         $em->remove( $ticket);
         $em->flush();
+        $this->success("Se ha restablecido su contraseña.");
         return $this->redirectToRoute('home');
       }
       else{

@@ -44,6 +44,18 @@
 
 }
 
+
+.alert-group {
+   position: fixed;
+    width: 80%;
+    margin-top: 4%;
+    margin-left: 10%;
+    z-index:  1040;
+    .alert{
+    	text-align: center;
+    }
+}
+
 .g-recaptcha{
 	width: 304px;
     margin: 4px auto 0;

@@ -34,9 +34,30 @@
     <body>  
 
 
-        {% block menu %}
-            
+       
+        {% block menu  %}
+
+            {% include "nim/element/menu.nim.html.twig" %}
+
         {% endblock %}
+
+
+        <div class="alert-group">
+             {% for label, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="alert  alert-{{ label }}" role="alert">
+                    {{ message }}
+
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            {% endfor %}
+        {% endfor %}
+
+        </div>
+       
+
 
 
          {% block content %}

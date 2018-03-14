@@ -5,6 +5,7 @@ use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use AppBundle\Entity\UsuarioCliente;
 use AppBundle\Entity\Ticket;
@@ -20,27 +21,52 @@ class GeneralManager{
 
    protected  $requestStack;
    protected  $request;
+   protected  $session;
    protected  $route;
    protected  $formFactory;
    protected  $twig;
    protected $doctrine;
 
-
    public function __construct(
             Environment  $twig,
             RequestStack $requestStack,
+            SessionInterface $session,
             RouterInterface  $route,
             ManagerRegistry $doctrine,
             FormFactoryInterface $formFactory
              )
   {
       $this->requestStack = $requestStack;
+      $this->session = $session;
       $this->request = $this->requestStack->getCurrentRequest();
       $this->route=$route;
       $this->FormFactory=$formFactory;
       $this->twig=$twig;
       $this->doctrine=$doctrine;
   }
+
+
+  protected function addFlash($type, $message)
+     {
+         $this->session->getFlashBag()->add($type, $message);
+     }
+
+  protected function  notice($message){
+    $this->addFlash( 'notice', $message  );
+  }
+
+  protected function  success($message){
+    $this->addFlash( 'success', $message  );
+  }
+  protected function  warning($message){
+    $this->addFlash( 'warning', $message  );
+  }
+
+  protected function  error($message){
+    $this->addFlash( 'danger', $message  );
+  }
+
+
 
   protected function generateUrl($name, $parameters = array(), $referenceType = UrlGeneratorInterface::ABSOLUTE_PATH){
     return $this->route->generate($name,$parameters,$referenceType);
@@ -109,7 +135,7 @@ class GeneralManager{
 
      $repo =$entityManager->getRepository( Ticket::class   );
 
-    /* Eñliminamos token anteriores  */ 
+    /* Eñliminamos token anteriores  */
      $repo->createQueryBuilder("t")
           ->delete()
           ->where( " t.idEntidad = :idEntidad" )
