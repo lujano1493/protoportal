@@ -68,16 +68,17 @@
         {% endblock %}
 
        
-       {% javascripts filter="?jsqueeze" output="js/nim.js"
+       {% javascripts  output="js/nim.js"
         "assets/jquery/dist/jquery.js"
+        "assets/bootstrap/dist/js/bootstrap.js"
         "javascript/Highcharts-6.0.4/code/highcharts.js"
         "javascript/Highcharts-6.0.4/code/highcharts-more.js"
-        "assets/bootstrap/dist/js/bootstrap.js"
-
         %}
         <script src="{{ asset_url }}"></script>
-    {% endjavascripts %}
 
+    {% endjavascripts %}
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    
 
 
          {% block javascript %}
