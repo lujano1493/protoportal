@@ -4,8 +4,7 @@
 
 {% block css %}
 	    {% stylesheets  filter="scssphp"  output="css/inicio.css"
-               "css/Time/time.css"
-               "css/Style.css"
+               "style/Time/time.css"
 
         %}  
 
@@ -29,12 +28,12 @@
 
  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
        {% javascripts filter="?jsqueeze" output="js/inicio.js"
-        "js/Particulas/lib/particles.js"
-        "js/Particulas/lib/stats.js"
-        "js/count.js"
-        "js/Particulas/app.js"
-        "js/Graficas.js"
-        "js/cajas.js"
+        "javascript/Particulas/lib/particles.js"
+        "javascript/Particulas/lib/stats.js"
+        "javascript/count.js"
+        "javascript/Particulas/app.js"
+        "javascript/Graficas.js"
+        "javascript/cajas.js"
         %}
         <script src="{{ asset_url }}"></script>
     {% endjavascripts %}

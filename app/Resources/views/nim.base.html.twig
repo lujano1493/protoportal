@@ -14,8 +14,11 @@
 
         {% stylesheets  filter="scssphp"  output="css/nim.css"
                "scss/base.scss"
-               "css/Time/time.css"
-               "css/Style.css"
+               "style/Pag/Home.css"
+               "style/Pag/Proyecto.css"
+               "style/Pag/faq.css"
+               "style/highcharts.css"
+               "style/Style.css"
         %}  
 
             <link rel="stylesheet" href="{{ asset_url }}" />
@@ -67,8 +70,8 @@
        
        {% javascripts filter="?jsqueeze" output="js/nim.js"
         "assets/jquery/dist/jquery.js"
-        "js/Highcharts-6.0.4/code/highcharts.js"
-        "js/Highcharts-6.0.4/code/highcharts-more.js"
+        "javascript/Highcharts-6.0.4/code/highcharts.js"
+        "javascript/Highcharts-6.0.4/code/highcharts-more.js"
         "assets/bootstrap/dist/js/bootstrap.js"
 
         %}
