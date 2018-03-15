@@ -1,0 +1,12 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_host: localhost
+    database_port: 3306
+    database_name: nimx
+    database_user: root
+    database_password: root
+    mailer_transport: gmail
+    mailer_host: 127.0.0.1
+    mailer_user: null
+    mailer_password: null
+    secret: 1951ef48922a3cd9b7daa899db5faef67bb8!dca3c

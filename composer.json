@@ -36,8 +36,8 @@
         "leafo/scssphp": "0.7.4",
         "oomphinc/composer-installers-extender":"1.1.2",
         "patchwork/jsqueeze": "~2.0",
-        "components/jquery": "3.2.1",
-        "twbs/bootstrap":"4.0"
+        "bower-asset/bootstrap": "4.0",
+        "npm-asset/jquery": "3.2.1"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",
@@ -74,9 +74,9 @@
         },
         "branch-alias": null,
 
-        "installer-types": ["component","twbs"],
+        "installer-types": ["bower-asset", "npm-asset"],
         "installer-paths": {
-            "web/assets/{$name}/": ["type:component","type:twbs"]
+            "web/assets/{$name}/": ["type:bower-asset", "type:npm-asset"]
         }
     },
     "repositories": [
