@@ -12,7 +12,7 @@
         </title>
         {% block stylesheets %}{% endblock %}
 
-        {% stylesheets  filter="scssphp"  output="css/app.css"
+        {% stylesheets  filter="scssphp"  output="css/nim.css"
                "scss/base.scss"
                "css/Time/time.css"
                "css/Style.css"
@@ -65,11 +65,11 @@
         {% endblock %}
 
        
-       {% javascripts filter="?jsqueeze" output="js/app.js"
+       {% javascripts filter="?jsqueeze" output="js/nim.js"
         "assets/jquery/dist/jquery.js"
         "js/Highcharts-6.0.4/code/highcharts.js"
         "js/Highcharts-6.0.4/code/highcharts-more.js"
-        "assets/bootstrap/dist/js//bootstrap.js"
+        "assets/bootstrap/dist/js/bootstrap.js"
 
         %}
         <script src="{{ asset_url }}"></script>
