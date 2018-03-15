@@ -13,7 +13,7 @@
         {% block stylesheets %}{% endblock %}
 
         {% stylesheets  filter="scssphp"  output="css/app.css"
-               "assets/app/base.scss"
+               "scss/base.scss"
                "css/Time/time.css"
                "css/Style.css"
         %}  
@@ -66,10 +66,10 @@
 
        
        {% javascripts filter="?jsqueeze" output="js/app.js"
-        "js/jquery/jquery.js"
+        "assets/jquery/dist/jquery.js"
         "js/Highcharts-6.0.4/code/highcharts.js"
         "js/Highcharts-6.0.4/code/highcharts-more.js"
-        "%asset_twbs_js%/bootstrap.js"
+        "assets/bootstrap/dist/js//bootstrap.js"
 
         %}
         <script src="{{ asset_url }}"></script>
