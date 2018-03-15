@@ -1,0 +1,7 @@
+// "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
+
+
+@import "theme/variables_nim";
+@import "bootstrap";
+@import "user";
+@import "theme/bootswatch_nim";
