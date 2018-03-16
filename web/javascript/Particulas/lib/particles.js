@@ -460,16 +460,6 @@ var pJS = function(tag_id, params){
 
       case 'image':
 
-        function draw(){
-          pJS.canvas.ctx.drawImage(
-            img_obj,
-            p.x-radius,
-            p.y-radius,
-            radius*2,
-            radius*2 / p.img.ratio
-          );
-        }
-
         if(pJS.tmp.img_type == 'svg'){
           var img_obj = p.img.obj;
         }else{
@@ -477,7 +467,13 @@ var pJS = function(tag_id, params){
         }
 
         if(img_obj){
-          draw();
+          pJS.canvas.ctx.drawImage(
+            img_obj,
+            p.x-radius,
+            p.y-radius,
+            radius*2,
+            radius*2 / p.img.ratio
+          );
         }
 
       break;
