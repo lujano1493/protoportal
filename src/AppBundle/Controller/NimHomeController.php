@@ -31,11 +31,12 @@
     /**
     *@Route("/login", name="nim_login" )
     **/
-    public function loginAction(Request $request, AuthenticationUtils $authUtils){
-    $title="Login NIM";
+    public function loginAction(AuthenticationUtils $authUtils){
+    $title=$this->get('translator')->trans("Login NIM");
 
       // get the login error if there is one
     $error = $authUtils->getLastAuthenticationError();
+
 
     // last username entered by the user
     $lastUsername = $authUtils->getLastUsername();

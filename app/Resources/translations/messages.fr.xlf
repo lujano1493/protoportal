@@ -397,7 +397,6 @@
     <unit id="48.HBpB">
       <notes>
         <note category="file-source" priority="1">app/Resources/views/nim/element/menu.nim.html.twig:9</note>
-        <note category="state" priority="1">new</note>
       </notes>
       <segment>
         <source>menu.titulo.perfil</source>
@@ -407,7 +406,6 @@
     <unit id="rrwMads">
       <notes>
         <note category="file-source" priority="1">app/Resources/views/nim/element/menu.nim.html.twig:12</note>
-        <note category="state" priority="1">new</note>
       </notes>
       <segment>
         <source>menu.titulo.inicio</source>
@@ -417,10 +415,18 @@
     <unit id="aEXrOd5">
       <notes>
         <note category="file-source" priority="1">app/Resources/views/nim/element/menu.nim.html.twig:15</note>
-        <note category="state" priority="1">new</note>
       </notes>
       <segment>
         <source>menu.titulo.proyecto</source>
+        <target></target>
+      </segment>
+    </unit>
+    <unit id="Rn5PNsB">
+      <notes>
+        <note category="file-source" priority="1">src/AppBundle/Controller/NimHomeController.php:35</note>
+      </notes>
+      <segment>
+        <source>Login NIM</source>
         <target></target>
       </segment>
     </unit>

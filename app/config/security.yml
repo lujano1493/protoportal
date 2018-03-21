@@ -33,8 +33,8 @@ security:
         main:
             anonymous: ~
             form_login:
-                login_path: /login
-                check_path: /login
+                login_path: nim_login
+                check_path: nim_login
                 provider: users_nim_provider
                 csrf_token_generator: security.csrf.token_manager
                 default_target_path:  nim_profile
