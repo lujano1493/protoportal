@@ -19,16 +19,6 @@
   class NimHomeController extends GeneralController{
 
 
-    /**
-    * @Route("/" , name="home")
-    */
-
-    public function indexAction(){
-      return $this->render("nim/inicio.html.twig" );
-
-    }
-
-
 
     /**
     * @Route("/registro", name="nim_registro")

@@ -10,19 +10,19 @@
                                 <div class="col-sm-8 reloj">
                                     <div class="inline-block">
                                         <h2 class="counter1" id="dias">00</h2>
-                                        <span class="pre block">días</span>
+                                        <span class="pre block">{{ 'inicio.conteo.dias' | trans}}</span>
                                     </div>
                                     <div class="inline-block">
                                         <h2 class="counter" id="horas">00</h2>
-                                        <span class="pre block">horas</span>
+                                        <span class="pre block">{{ 'inicio.conteo.horas' | trans}}</span>
                                     </div>
                                     <div class="inline-block">
                                         <h2 class="counter" id="min">00</h2>
-                                        <span class="pre block">min</span>
+                                        <span class="pre block">{{ 'inicio.conteo.min' | trans}}</span>
                                     </div>
                                     <div class="inline-block">
                                         <h2 class="counter" id="seg">00</h2>
-                                        <span class="pre block">seg</span>
+                                        <span class="pre block">{{ 'inicio.conteo.seg' | trans}}</span>
                                     </div>
                                 </div>
                             </div>
@@ -40,11 +40,11 @@
 
                     <div id="Ficha" class="row">
                         <div class="col-sm-12">
-                            <h1 class="display-3">Ficha Técnica.</h1>
+                            <h1 class="display-3">{{'inicio.titulo.fichaTecnica'|trans }}</h1>
                             <div class="contenido">
                                <div class="columna">
                                    <div class="carta">
-                                        <div class="titulo">TOTAL DE TOKENS</div>
+                                        <div class="titulo">{{'inicio.titulo.totalTokens' | trans }}</div>
                                         <div class="subtitulo">50,000,000  NIMS</div>
                                     </div>
                                     <div class="carta">
@@ -62,27 +62,27 @@
                                </div>
                                <div class="columna">
                                    <div class="carta">
-                                        <div class="titulo">MÉTODO DISTRIBUCIÓN</div>
-                                        <div class="subtitulo">CONTRATO INTELIGENTE ETHER ERC20</div>
+                                        <div class="titulo">{{'inicio.titulo.metodoDist' | trans }}</div>
+                                        <div class="subtitulo">{{'inicio.titulo.contratoInte'  | trans }}</div>
                                     </div>
                                     <div class="carta">
-                                        <div class="titulo">MONEDA ACEPTADA</div>
+                                        <div class="titulo">{{'inicio.titulo.monedaAcep' | trans }}</div>
                                         <div class="subtitulo">ETHER</div>
                                     </div>
                                     <div class="carta">
                                         <div class="titulo">PRE-OFERTA</div>
-                                        <div class="subtitulo"> 02 DE FEBRERO (Capitalización mínima 100 ETHER)</div>
+                                        <div class="subtitulo">  {{'inicio.titulo.preOferta' | trans }} </div>
                                     </div>
                                     <div class="carta">
-                                        <div class="titulo">OFERTA (PRE ICO): </div>
-                                        <div class="subtitulo">FEBRERO 2018</div>
+                                        <div class="titulo"> {{'inicio.titulo.ofertaIco' | trans }}: </div>
+                                        <div class="subtitulo"> {{'inicio.titulo.ofertaPreFecha' | trans }}</div>
                                     </div>
                                </div>
                             </div>
                             <div class="columna">
                                    <div class="carta">
                                         <div class="titulo">ICO</div>
-                                        <div class="subtitulo">MARZO 2018</div>
+                                        <div class="subtitulo"> {{'inicio.titulo.ofertaFecha' | trans }} </div>
                                     </div>
                                </div>
                         </div>
@@ -151,7 +151,7 @@
                                                         </h3>
                                                         <div class="contenido">
                                                             <p> <span aria-hidden="true">&cir;</span>
-                                                                Desallorro de portafolio de cobertura
+                                                                Desarrollo de portafolio de cobertura
                                                                 </p>
                                                             <p><span aria-hidden="true">&cir;</span>
                                                                 Planeación plataforma Beta.

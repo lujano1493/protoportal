@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="en" trgLang="en">
+  <file id="validators.en">
+    <unit id="rNQ3mx5">
+      <notes>
+        <note category="file-source" priority="1">src/AppBundle/Form/UsuarioClienteType.php:25</note>
+        <note category="file-source" priority="1">src/AppBundle/Form/RecuperarContrasenaType.php:18</note>
+      </notes>
+      <segment>
+        <source>las contraseñas deben ser iguales.</source>
+        <target>the passwords must be the same.</target>
+      </segment>
+    </unit>
+    <unit id="1IBLTg8">
+      <notes>
+        <note category="file-source" priority="1">src/AppBundle/Entity/Ticket.php:0</note>
+      </notes>
+      <segment>
+        <source>El token ya ha sido utilizado</source>
+        <target>The token has already been used</target>
+      </segment>
+    </unit>
+    <unit id="gNZarqz">
+      <notes>
+        <note category="file-source" priority="1">src/AppBundle/Entity/UsuarioCliente.php:0</note>
+      </notes>
+      <segment>
+        <source>El correo ya ha sido utilizado</source>
+        <target>The email has already been used</target>
+      </segment>
+    </unit>
+    <unit id="Zj2ceyO">
+      <notes>
+        <note category="file-source" priority="1">src/AppBundle/Entity/UsuarioCliente.php:0</note>
+      </notes>
+      <segment>
+        <source>El nickname ya ha sido utilizado</source>
+        <target>The nickname has already been used</target>
+      </segment>
+    </unit>
+    <unit id="38npJM8">
+      <notes>
+        <note category="file-source" priority="1">src/AppBundle/Entity/UsuarioCliente.php:0</note>
+      </notes>
+      <segment>
+        <source>El keycode ya ha sido utilizado</source>
+        <target>The keycode has already been used</target>
+      </segment>
+    </unit>
+    <unit id="HHx4OSa">
+      <notes>
+        <note category="file-source" priority="1">src/AppBundle/Entity/UsuarioCliente.php:0</note>
+      </notes>
+      <segment>
+        <source>Tu nombre no puede contener numeros</source>
+        <target>Your name can not contain numbers</target>
+      </segment>
+    </unit>
+    <unit id="adYGlUr">
+      <notes>
+        <note category="file-source" priority="1">src/AppBundle/Entity/UsuarioCliente.php:0</note>
+      </notes>
+      <segment>
+        <source>Ingresa fecha valida</source>
+        <target>Enter valid date</target>
+      </segment>
+    </unit>
+  </file>
+</xliff>

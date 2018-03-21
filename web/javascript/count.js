@@ -1,6 +1,5 @@
 $(document).ready(function (){
 	getTime();
-	console.log("HOLA");
 });
 
 
@@ -8,7 +7,7 @@ $(document).ready(function (){
 
 function getTime() {
 	now = new Date();
-	fecha = new Date("2018-03-31 23:59:59 UTC");
+	fecha = new Date(2018,2,31);
 	days = (fecha - now) / 1000 / 60 / 60 / 24;
 	daysRound = Math.floor(days);
 	hours = (fecha - now) / 1000 / 60 / 60 - (24 * daysRound);
@@ -24,10 +23,10 @@ function getTime() {
 		//seguiria el conteo regresívo pero en valores negativos.
 	}
 	else{
-		document.getElementById('dias').innerHTML = daysRound;
-		document.getElementById('horas').innerHTML = hoursRound;
-		document.getElementById('min').innerHTML = minutesRound;
-		document.getElementById('seg').innerHTML = secondsRound;
+		document.getElementById('dias').innerHTML =  daysRound < 10?  ('0' +daysRound) :daysRound;
+		document.getElementById('horas').innerHTML = hoursRound<10? ('0' +hoursRound):hoursRound;
+		document.getElementById('min').innerHTML = minutesRound<10? ('0'+minutesRound) : minutesRound;
+		document.getElementById('seg').innerHTML = secondsRound<10? ('0'+secondsRound):secondsRound;
 	}
 	newtime = window.setTimeout("getTime();", 1000);
 }

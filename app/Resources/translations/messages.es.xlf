@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="es" trgLang="es">
+<xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="en" trgLang="es">
   <file id="messages.es">
     <unit id="R4ZvqsP">
       <notes>
-        <note category="file-source" priority="1">app/Resources/views/proximamente.html.twig:11</note>
+        <note category="state" priority="1">obsolete</note>
       </notes>
       <segment>
         <source>comming.head_title</source>
@@ -12,7 +12,7 @@
     </unit>
     <unit id="KH0.3FA">
       <notes>
-        <note category="file-source" priority="1">app/Resources/views/proximamente.html.twig:36</note>
+        <note category="state" priority="1">obsolete</note>
       </notes>
       <segment>
         <source>comming.title</source>
@@ -21,7 +21,7 @@
     </unit>
     <unit id="b3KSSIr">
       <notes>
-        <note category="file-source" priority="1">app/Resources/views/proximamente.html.twig:38</note>
+        <note category="state" priority="1">obsolete</note>
       </notes>
       <segment>
         <source>comming.messageDate</source>
@@ -30,7 +30,7 @@
     </unit>
     <unit id="3UphXbX">
       <notes>
-        <note category="file-source" priority="1">app/Resources/views/proximamente.html.twig:39</note>
+        <note category="state" priority="1">obsolete</note>
       </notes>
       <segment>
         <source>comming.messageInstruction</source>
@@ -39,7 +39,7 @@
     </unit>
     <unit id="7h1iq2S">
       <notes>
-        <note category="file-source" priority="1">app/Resources/views/proximamente.html.twig:41</note>
+        <note category="state" priority="1">obsolete</note>
       </notes>
       <segment>
         <source>comming.test_bitch</source>
@@ -48,29 +48,380 @@
     </unit>
     <unit id="h16F1_o">
       <notes>
-        <note category="file-source" priority="1">app/Resources/views/proximamente.html.twig:47</note>
+        <note category="state" priority="1">obsolete</note>
       </notes>
       <segment>
         <source>comming.btnMsg</source>
         <target>¡Avisame!</target>
       </segment>
     </unit>
-    <unit id="KxsAvY7">
+    <unit id="RuIJkZl">
       <notes>
         <note category="state" priority="1">obsolete</note>
       </notes>
       <segment>
-        <source>label.test</source>
-        <target>mensaje prueba</target>
-      </segment>
-    </unit>
-    <unit id="RuIJkZl">
-      <notes>
-        <note category="file-source" priority="1">app/Resources/views/proximamente.html.twig:44</note>
-      </notes>
-      <segment>
         <source>comming.placeholder_email</source>
         <target>Ingresa email ...</target>
+      </segment>
+    </unit>
+    <unit id="RVug4pA">
+      <notes>
+        <note category="file-source" priority="1">app/Resources/views/nim/element/content.nim.html.twig:13</note>
+      </notes>
+      <segment>
+        <source>inicio.conteo.dias</source>
+        <target>dias</target>
+      </segment>
+    </unit>
+    <unit id="G.pBabs">
+      <notes>
+        <note category="file-source" priority="1">app/Resources/views/nim/element/content.nim.html.twig:17</note>
+      </notes>
+      <segment>
+        <source>inicio.conteo.horas</source>
+        <target>horas</target>
+      </segment>
+    </unit>
+    <unit id="lp8tVym">
+      <notes>
+        <note category="file-source" priority="1">app/Resources/views/nim/element/content.nim.html.twig:21</note>
+      </notes>
+      <segment>
+        <source>inicio.conteo.min</source>
+        <target>min</target>
+      </segment>
+    </unit>
+    <unit id="d2K3E4b">
+      <notes>
+        <note category="file-source" priority="1">app/Resources/views/nim/element/content.nim.html.twig:25</note>
+      </notes>
+      <segment>
+        <source>inicio.conteo.seg</source>
+        <target>seg</target>
+      </segment>
+    </unit>
+    <unit id="0lI5XdZ">
+      <notes>
+        <note category="file-source" priority="1">app/Resources/views/nim/element/content.nim.html.twig:43</note>
+      </notes>
+      <segment>
+        <source>inicio.titulo.fichaTecnica</source>
+        <target>Ficha Técnica.</target>
+      </segment>
+    </unit>
+    <unit id="0gAsefy">
+      <notes>
+        <note category="file-source" priority="1">app/Resources/views/nim/element/content.nim.html.twig:47</note>
+      </notes>
+      <segment>
+        <source>inicio.titulo.totalTokens</source>
+        <target>TOTAL DE TOKENS</target>
+      </segment>
+    </unit>
+    <unit id="Hrchr13">
+      <notes>
+        <note category="file-source" priority="1">app/Resources/views/nim/element/content.nim.html.twig:65</note>
+      </notes>
+      <segment>
+        <source>inicio.titulo.metodoDist</source>
+        <target>MÉTODO DISTRIBUCIÓN</target>
+      </segment>
+    </unit>
+    <unit id="Ts6H1ZL">
+      <notes>
+        <note category="file-source" priority="1">app/Resources/views/nim/element/content.nim.html.twig:66</note>
+      </notes>
+      <segment>
+        <source>inicio.titulo.contratoInte</source>
+        <target>CONTRATO INTELIGENTE ETHER ERC20</target>
+      </segment>
+    </unit>
+    <unit id="C2HfOB4">
+      <notes>
+        <note category="file-source" priority="1">src/AppBundle/Form/CorreoType.php:17</note>
+        <note category="file-source" priority="1">src/AppBundle/Form/UsuarioClienteType.php:23</note>
+      </notes>
+      <segment>
+        <source>Correo</source>
+        <target>Correo</target>
+      </segment>
+    </unit>
+    <unit id="wO2Fs3T">
+      <notes>
+        <note category="file-source" priority="1">src/AppBundle/Form/CorreoType.php:20</note>
+        <note category="file-source" priority="1">src/AppBundle/Form/UsuarioClienteType.php:23</note>
+      </notes>
+      <segment>
+        <source>Ingresa correo</source>
+        <target>Ingresa correo</target>
+      </segment>
+    </unit>
+    <unit id="1kP6zly">
+      <notes>
+        <note category="file-source" priority="1">src/AppBundle/Form/CorreoType.php:24</note>
+      </notes>
+      <segment>
+        <source>Reenviar</source>
+        <target>Reenviar</target>
+      </segment>
+    </unit>
+    <unit id="zct0Iso">
+      <notes>
+        <note category="file-source" priority="1">src/AppBundle/Form/UsuarioClienteType.php:20</note>
+        <note category="file-source" priority="1">src/AppBundle/Form/RecuperarContrasenaType.php:17</note>
+      </notes>
+      <segment>
+        <source>contrasena</source>
+        <target>contraseña</target>
+      </segment>
+    </unit>
+    <unit id="8eeHY4z">
+      <notes>
+        <note category="file-source" priority="1">src/AppBundle/Form/UsuarioClienteType.php:21</note>
+      </notes>
+      <segment>
+        <source>Nombre Completo</source>
+        <target>Nombre Completo</target>
+      </segment>
+    </unit>
+    <unit id="lDZiT15">
+      <notes>
+        <note category="file-source" priority="1">src/AppBundle/Form/UsuarioClienteType.php:21</note>
+      </notes>
+      <segment>
+        <source>Ingresa nombre</source>
+        <target>Ingresa nombre</target>
+      </segment>
+    </unit>
+    <unit id="b6M8LBa">
+      <notes>
+        <note category="file-source" priority="1">src/AppBundle/Form/UsuarioClienteType.php:22</note>
+      </notes>
+      <segment>
+        <source>Ingresa apellidos</source>
+        <target>Ingresa apellidos</target>
+      </segment>
+    </unit>
+    <unit id="Ec2BmNV">
+      <notes>
+        <note category="file-source" priority="1">src/AppBundle/Form/UsuarioClienteType.php:24</note>
+      </notes>
+      <segment>
+        <source>Fecha de Nacimiento</source>
+        <target>Fecha de Nacimiento</target>
+      </segment>
+    </unit>
+    <unit id="5JRz4_p">
+      <notes>
+        <note category="file-source" priority="1">src/AppBundle/Form/UsuarioClienteType.php:24</note>
+      </notes>
+      <segment>
+        <source>Ingresa fecha de nacimiento</source>
+        <target> Ingresa fecha de nacimiento</target>
+      </segment>
+    </unit>
+    <unit id="o4mmON7">
+      <notes>
+        <note category="file-source" priority="1">src/AppBundle/Form/UsuarioClienteType.php:30</note>
+        <note category="file-source" priority="1">src/AppBundle/Form/RecuperarContrasenaType.php:23</note>
+      </notes>
+      <segment>
+        <source>Contraseña</source>
+        <target>Contraseña</target>
+      </segment>
+    </unit>
+    <unit id="hYRfAuQ">
+      <notes>
+        <note category="file-source" priority="1">src/AppBundle/Form/UsuarioClienteType.php:30</note>
+        <note category="file-source" priority="1">src/AppBundle/Form/RecuperarContrasenaType.php:23</note>
+      </notes>
+      <segment>
+        <source>Ingresa contraseña</source>
+        <target>Ingresa contraseña</target>
+      </segment>
+    </unit>
+    <unit id="nNU1_Zw">
+      <notes>
+        <note category="file-source" priority="1">src/AppBundle/Form/UsuarioClienteType.php:31</note>
+        <note category="file-source" priority="1">src/AppBundle/Form/RecuperarContrasenaType.php:24</note>
+      </notes>
+      <segment>
+        <source>Confirmar contraseña</source>
+        <target>Confirmar contraseña</target>
+      </segment>
+    </unit>
+    <unit id="YkTyOOM">
+      <notes>
+        <note category="file-source" priority="1">src/AppBundle/Form/UsuarioClienteType.php:33</note>
+      </notes>
+      <segment>
+        <source>Acepta términos y condiciones</source>
+        <target>Acepta términos y condiciones</target>
+      </segment>
+    </unit>
+    <unit id="SDoOFHx">
+      <notes>
+        <note category="file-source" priority="1">src/AppBundle/Form/UsuarioClienteType.php:34</note>
+      </notes>
+      <segment>
+        <source>Registrarse</source>
+        <target>Registrarse</target>
+      </segment>
+    </unit>
+    <unit id="mww_QHf">
+      <notes>
+        <note category="file-source" priority="1">src/AppBundle/Form/RecuperarContrasenaType.php:26</note>
+      </notes>
+      <segment>
+        <source>Restablecer</source>
+        <target>Restablecer</target>
+      </segment>
+    </unit>
+    <unit id="2s0.YTf">
+      <notes>
+        <note category="file-source" priority="1">app/Resources/views/nim/element/content.nim.html.twig:69</note>
+      </notes>
+      <segment>
+        <source>inicio.titulo.monedaAcep</source>
+        <target>MONEDA ACEPTADA</target>
+      </segment>
+    </unit>
+    <unit id="Y6XCTiw">
+      <notes>
+        <note category="file-source" priority="1">app/Resources/views/nim/element/content.nim.html.twig:74</note>
+      </notes>
+      <segment>
+        <source>inicio.titulo.preOferta</source>
+        <target>02 DE FEBRERO (Capitalización mínima 100 ETHER)</target>
+      </segment>
+    </unit>
+    <unit id="4d2ecbB">
+      <notes>
+        <note category="file-source" priority="1">app/Resources/views/nim/element/content.nim.html.twig:77</note>
+      </notes>
+      <segment>
+        <source>inicio.titulo.ofertaIco</source>
+        <target>OFERTA (PRE ICO)</target>
+      </segment>
+    </unit>
+    <unit id="DmRokNY">
+      <notes>
+        <note category="file-source" priority="1">app/Resources/views/nim/element/content.nim.html.twig:78</note>
+      </notes>
+      <segment>
+        <source>inicio.titulo.ofertaPreFecha</source>
+        <target>FEBRERO 2018</target>
+      </segment>
+    </unit>
+    <unit id=".nAfTDT">
+      <notes>
+        <note category="file-source" priority="1">app/Resources/views/nim/element/content.nim.html.twig:85</note>
+      </notes>
+      <segment>
+        <source>inicio.titulo.ofertaFecha</source>
+        <target>MARZO 2018</target>
+      </segment>
+    </unit>
+    <unit id="yH_SPkT">
+      <notes>
+        <note category="file-source" priority="1">app/Resources/views/nim/element/menu.nim.html.twig:17</note>
+      </notes>
+      <segment>
+        <source>menu.titulo.fechaTecnica</source>
+        <target>Ficha Técnica</target>
+      </segment>
+    </unit>
+    <unit id="ULGkMvv">
+      <notes>
+        <note category="file-source" priority="1">app/Resources/views/nim/element/menu.nim.html.twig:18</note>
+      </notes>
+      <segment>
+        <source>menu.titulo.beneficios</source>
+        <target>Beneficios</target>
+      </segment>
+    </unit>
+    <unit id="JWk.BOt">
+      <notes>
+        <note category="file-source" priority="1">app/Resources/views/nim/element/menu.nim.html.twig:19</note>
+      </notes>
+      <segment>
+        <source>menu.titulo.bono</source>
+        <target>Bono</target>
+      </segment>
+    </unit>
+    <unit id=".SChw2L">
+      <notes>
+        <note category="file-source" priority="1">app/Resources/views/nim/element/menu.nim.html.twig:20</note>
+      </notes>
+      <segment>
+        <source>menu.titulo.distribucion</source>
+        <target>Distribución</target>
+      </segment>
+    </unit>
+    <unit id="sofBnOS">
+      <notes>
+        <note category="file-source" priority="1">app/Resources/views/nim/element/menu.nim.html.twig:22</note>
+      </notes>
+      <segment>
+        <source>menu.titulo.equipo</source>
+        <target>Equipo</target>
+      </segment>
+    </unit>
+    <unit id="uktEYP6">
+      <notes>
+        <note category="file-source" priority="1">app/Resources/views/nim/element/menu.nim.html.twig:26</note>
+      </notes>
+      <segment>
+        <source>menu.titulo.lineaTiempo</source>
+        <target>Linea de Tiempo</target>
+      </segment>
+    </unit>
+    <unit id="iBW8TrC">
+      <notes>
+        <note category="file-source" priority="1">app/Resources/views/nim/element/menu.nim.html.twig:27</note>
+      </notes>
+      <segment>
+        <source>menu.titulo.contacto</source>
+        <target>Contacto</target>
+      </segment>
+    </unit>
+    <unit id="gKz20vi">
+      <notes>
+        <note category="file-source" priority="1">app/Resources/views/nim/element/menu.nim.html.twig:29</note>
+      </notes>
+      <segment>
+        <source>menu.titulo.entrar</source>
+        <target>Entrar</target>
+      </segment>
+    </unit>
+    <unit id="48.HBpB">
+      <notes>
+        <note category="file-source" priority="1">app/Resources/views/nim/element/menu.nim.html.twig:9</note>
+        <note category="state" priority="1">new</note>
+      </notes>
+      <segment>
+        <source>menu.titulo.perfil</source>
+        <target>Perfil</target>
+      </segment>
+    </unit>
+    <unit id="rrwMads">
+      <notes>
+        <note category="file-source" priority="1">app/Resources/views/nim/element/menu.nim.html.twig:12</note>
+        <note category="state" priority="1">new</note>
+      </notes>
+      <segment>
+        <source>menu.titulo.inicio</source>
+        <target>Inicio</target>
+      </segment>
+    </unit>
+    <unit id="aEXrOd5">
+      <notes>
+        <note category="file-source" priority="1">app/Resources/views/nim/element/menu.nim.html.twig:15</note>
+        <note category="state" priority="1">new</note>
+      </notes>
+      <segment>
+        <source>menu.titulo.proyecto</source>
+        <target>Proyecto</target>
       </segment>
     </unit>
   </file>

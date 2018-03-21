@@ -11,7 +11,7 @@ class LocaleSubscriber implements EventSubscriberInterface
 
     public function __construct($defaultLocale = 'es')
     {
-        $this->defaultLocale = $defaultLocale;      
+        $this->defaultLocale = $defaultLocale;
     }
 
     public function onKernelRequest(GetResponseEvent $event)
@@ -20,13 +20,16 @@ class LocaleSubscriber implements EventSubscriberInterface
         if (!$request->hasPreviousSession()) {
             return;
         }
-
         // try to see if the locale has been set as a _locale routing parameter
         if ($locale = $request->attributes->get('_locale')) {
+            
             $request->getSession()->set('_locale', $locale);
         } else {
             // if no explicit locale has been set on this request, use one from the session
-            $request->setLocale($request->getSession()->get('_locale', $this->defaultLocale));
+            $default= $this->defaultLocale;//TODO checar por ip lugar 
+            $locale= $request->getSession()->get('_locale',$default);
+
+            $request->setLocale($locale);
         }
     }
 

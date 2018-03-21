@@ -6,27 +6,27 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                   {% if  app.user is defined and   app.user is not empty  %}
-                     <li class="nav-item" ><a class="nav-link" href="{{ path('nim_profile') }}">Perfil</a></li>
+                     <li class="nav-item" ><a class="nav-link" href="{{ path('nim_profile') }}">{{'menu.titulo.perfil' | trans }}Perfil</a></li>
                      <li class="nav-item" ><a class="nav-link" href="/logout">Salir</a></li>
                   {% else %}
-                    <li class="nav-item active"><a class="nav-link" href="#Home">Home <span class="sr-only">(current)</span></a></li>
+                    <li class="nav-item active"><a class="nav-link" href="#Home">{{'menu.titulo.inicio' | trans }}  <span class="sr-only">(current)</span></a></li>
                     <li class="nav-item dropdown" >
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Proyecto</a>
+                          {{'menu.titulo.proyecto' | trans }}</a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                          <a class="dropdown-item" href="#Proyecto">Ficha Tecnica</a>
-                          <a class="dropdown-item" href="#Benef">Beneficios</a>
-                          <a class="dropdown-item" href="#Bono">Bono</a>
-                          <a class="dropdown-item" href="#Distr">Distribuci&oacute;n</a>
+                          <a class="dropdown-item" href="#Proyecto">{{'menu.titulo.fechaTecnica' | trans }}</a>
+                          <a class="dropdown-item" href="#Benef"> {{'menu.titulo.beneficios' | trans }}</a>
+                          <a class="dropdown-item" href="#Bono">{{'menu.titulo.bono' | trans }}</a>
+                          <a class="dropdown-item" href="#Distr">{{'menu.titulo.distribucion' | trans }}</a>
                           <a class="dropdown-item" href="#RoadMap">RoadMap</a>
-                          <a class="dropdown-item" href="#Equipo">Equipo</a>
+                          <a class="dropdown-item" href="#Equipo"> {{'menu.titulo.equipo' | trans }}</a>
                         </div>
                      </li>
                     <li class="nav-item" ><a class="nav-link" href="#Whitepaper">Whitepaper</a></li>
-                    <li class="nav-item" ><a class="nav-link" href="#TimeLine">Linea de Tiempo</a></li>
-                    <li class="nav-item" ><a class="nav-link" href="#Producto">Contacto</a></li>
+                    <li class="nav-item" ><a class="nav-link" href="#TimeLine">{{'menu.titulo.lineaTiempo' | trans }}</a></li>
+                    <li class="nav-item" ><a class="nav-link" href="#Producto">{{'menu.titulo.contacto' | trans }}</a></li>
                     <li class="nav-item" ><a class="nav-link" href="#Producto">Faq</a></li>
-                    <li class="nav-item" ><a class="nav-link" href="{{ path('nim_login') }}">Entrar</a></li>
+                    <li class="nav-item" ><a class="nav-link" href="{{ path('nim_login') }}">{{'menu.titulo.entrar' | trans }}</a></li>
                   {% endif %}
 
                 </ul>
